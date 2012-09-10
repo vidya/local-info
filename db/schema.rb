@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120909040839) do
+ActiveRecord::Schema.define(:version => 20120910005909) do
 
   create_table "roles", :force => true do |t|
     t.string   "name"
@@ -49,5 +49,16 @@ ActiveRecord::Schema.define(:version => 20120909040839) do
   end
 
   add_index "users_roles", ["user_id", "role_id"], :name => "index_users_roles_on_user_id_and_role_id"
+
+  create_table "zip_codes", :force => true do |t|
+    t.string   "zip",        :limit => 5,  :null => false
+    t.string   "state_code", :limit => 2,  :null => false
+    t.float    "latitude",                 :null => false
+    t.float    "longitude",                :null => false
+    t.string   "city",       :limit => 30
+    t.string   "state",      :limit => 20, :null => false
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
+  end
 
 end
