@@ -36,28 +36,7 @@ LocalInfo::Application.configure do
   config.active_support.deprecation = :stderr
 end
 
-puts "=  990 =================="
-  #`dropdb local_info_test`
-  `psql local_info_test < ~/tmp/local_info_development.dmp`
+`pg_dump --data-only local_info_development >~/tmp/local_info_development.dmp`
 
-#`dropdb local_info_test`
-#`createdb -O dad -T local_info_development local_info_test`
-
-#sh <<-STR
-#  cd #{Rails.root}/test/unit
-#  ls -aCF
-#
-#  dropdb local_info_test
-#  createdb local_info_test
-#
-#  #createdb -O dad -T local_info_development local_info_test
-#  #bundle exec rake test:units
-#
-#  pg_dump local_info_development >~/tmp/local_info_development.dmp
-#
-#  psql local_info_test < ~/tmp/local_info_development.dmp
-#
-#  #bundle exec rake db:migrate
-#  bundle exec rake test:units
-#STR
+`psql local_info_test < ~/tmp/local_info_development.dmp`
 
