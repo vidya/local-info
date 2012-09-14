@@ -1,4 +1,8 @@
 LocalInfo::Application.routes.draw do
+  get "zip_code/index"
+
+  get "zip_code/nearby_zip_codes"
+
   authenticated :user do
     root :to => 'home#index'
   end

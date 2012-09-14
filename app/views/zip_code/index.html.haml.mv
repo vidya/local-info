@@ -1,0 +1,5 @@
+%h1 ZipCode#index
+%p Find me in app/views/zip_code/index.html.haml
+
+= link_to 'show 95014 neighbors', '/zip_code/nearby_zip_codes'
+-#= link_to 'show 95014 neighbors', path_to(zip_code_nearby_zip_codes)

@@ -1,0 +1,12 @@
+h1 ZipCode#nearby_zip_codes
+
+p zip_codes in 20 mile radius
+
+ul
+  - @zc_list.each do |zc|
+    li.zip_code_li
+      .zip_code_area
+        = link_to "#{zc.city}, #{zc.state_code}  #{zc.zip}", zc.zip
+        p (latitude, longitude)
+          = (#{zc.latitude}, #{zc.longitude})
+
