@@ -12,8 +12,18 @@
   color: blue;
 }
 
+#zip-code-query {
+  background: #ffdead;
+  border: 1px solid green;
+  clear: both;
+  margin: auto;
+  margin-bottom: 10px;
+}
+
+#query-list {
+  list-style-type: none;
+}
+
 .btn-zip-code {
-    //background-color: #0000ff;
     background: #90ee90;
-    //border: 1px red solid;
 }

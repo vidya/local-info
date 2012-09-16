@@ -7,7 +7,6 @@ $ ->
   $('.zip_code_li:even > div').css  "background",   "#c0d0b0"
 
   $('#show-zip-codes').click ->
-    # alert 'btn click'
     latitude    = $('#latitude').val()
     longitude   = $('#longitude').val()
     radius      = $('#radius').val()

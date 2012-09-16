@@ -10,7 +10,12 @@ class ZipCodeController < ApplicationController
     #long = -122
     #radius = 20
 
+    @query = {
+      :latitude      => params[:latitude],
+      :longitude     => params[:longitude],
+      :radius        => params[:radius]
+    }
+
     @zc_list = ZipCode.neighbors params[:latitude], params[:longitude], params[:radius]
-    #@zc_list = ZipCode.neighbors lat, long, radius
   end
 end
