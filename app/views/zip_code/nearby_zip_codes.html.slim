@@ -10,8 +10,8 @@ h1 Neighboring zip codes
 
 ul
   - @zc_list.each do |zc|
-    li.zip_code_li
-      .zip_code_area
+    li.zip-code-li
+      .zip-code-area
         = link_to "#{zc.city}, #{zc.state_code}  #{zc.zip}", zc.zip
         p (latitude, longitude)
           = (#{zc.latitude}, #{zc.longitude})
