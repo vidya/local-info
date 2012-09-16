@@ -3,6 +3,28 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 $ ->
-  #  $('.zip_code_li').click -> alert 'li clicked'
   $('.zip_code_li > div').css       "color",        "black"
   $('.zip_code_li:even > div').css  "background",   "#c0d0b0"
+
+  $('#show-zip-codes').click ->
+    # alert 'btn click'
+    latitude    = $('#latitude').val()
+    longitude   = $('#longitude').val()
+    radius      = $('#radius').val()
+
+    href = this.href
+
+    href += '?'
+    href += 'latitude=' + latitude
+
+    href += '&'
+    href += 'longitude=' + longitude
+
+    href += '&'
+    href += 'radius=' + radius
+    this.href = href
+
+    console.log 'href = ' + href
+    console.log 'latitude = ' + latitude
+    console.log 'longitude = ' + longitude
+    console.log 'radius = ' + radius

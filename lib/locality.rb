@@ -1,5 +1,3 @@
-#require 'zipcode'
-
 class Locality
   MILES_PER_ARC_DEGREE = 69.09
 
@@ -24,7 +22,7 @@ class Locality
 	  west_long, east_long, south_lat, north_lat =  calc_geo_rect
 
     # zip_codes = [zip codes within given radius of (lat, long)]
-    ZipCode.find(:all, :conditions =>
+    ZipCode.all(:conditions =>
         ["longitude  > ? and longitude < ?
         and latitude > ? and latitude < ?",
         west_long, east_long, south_lat, north_lat]).select do |zc|
@@ -64,21 +62,6 @@ class Locality
 	  [west_long, east_long, south_lat, north_lat]
   end
 
-	#---- distance between two points on earth { -----------
-
-	#-- python algorithm for distance calculation 
-	#-- at http://zips.sourceforge.net/#dist_calc
-	#def calcDist(lat_A, long_A, lat_B, long_B):
-	#  distance = (sin(radians(lat_A)) *
-	#              sin(radians(lat_B)) +
-	#              cos(radians(lat_A)) *
-	#              cos(radians(lat_B)) *
-	#              cos(radians(long_A - long_B)))
-	#
-	#  distance = (degrees(acos(distance))) * 69.09
-	#
-	#  return distance
-	
 	def radians(deg)
 	  deg * (Math::PI / 180)
 	end
@@ -98,5 +81,4 @@ class Locality
 	
 	  degrees(Math::acos(dist)) * MILES_PER_ARC_DEGREE
 	end
-  #---- } distance between two points on earth -----------
 end

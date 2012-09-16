@@ -1,3 +1,16 @@
-h1 ZipCode#index
+h1 Show neighbors
 
-= link_to 'show 95014 neighbors', '/zip_code/nearby_zip_codes'
+span
+  = label_tag 'latitude'
+  = text_field_tag 'latitude', '0.0.0.0', :maxlength => 8, :size => 8, :id => 'latitude', :class => "ip-input"
+
+span
+  = label_tag 'longitude'
+  = text_field_tag 'longitude', '0.0.0.0', :maxlength => 8, :size => 8, :id => 'longitude', :class => "ip-input"
+
+span
+  = label_tag 'radius'
+  = text_field_tag 'longitude', '0.0.0.0', :maxlength => 8, :size => 8, :id => 'radius', :class => "ip-input"
+
+br = link_to 'Show zip codes', '/zip_code/nearby_zip_codes', :id => 'show-zip-codes', :class => 'btn-zip-code btn btn-small'
+
