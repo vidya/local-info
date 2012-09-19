@@ -4,8 +4,6 @@ class ZipCode < ActiveRecord::Base
   attr_accessible :city, :state, :latitude, :longitude, :state_code, :zip
 
   def self.neighbors(query)
-    #binding.pry
-
     case query[:query_type]
       when 'latitude_longitude'
         zc_list   = zip_codes_from_lat_long query[:latitude], query[:longitude], query[:radius]

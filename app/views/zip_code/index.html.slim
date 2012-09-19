@@ -1,7 +1,7 @@
 h1 Show neighbors
 
 #query_method
-  table.table.table-condensed.table-bordered
+  table.table.table-condensed.table-bordered#query-table
     tr
       td.td-compact = radio_button_tag 'query_method', "city_state", false, :class => "query-type"
       td.td-centered = label_tag 'city, state'
