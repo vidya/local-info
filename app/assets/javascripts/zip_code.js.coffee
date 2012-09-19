@@ -16,10 +16,18 @@ $ ->
 
       switch this.value
         when 'zip_code'
+#          $('#zip-code-div').hide()
+          $('#city-state-div').hide()
+          $('#lat-long-div').hide()
+
           zip_code = $('#zip-code').val()
           query_string += '&zip_code=' + zip_code
 
         when 'city_state'
+          $('#zip-code-div').hide()
+#          $('#city-state-div').hide()
+          $('#lat-long-div').hide()
+
           console.log 'CITY_STATE'
 
           city    = $('#city').val()
@@ -28,6 +36,10 @@ $ ->
           query_string += '&city=' + city + '&state=' + state
 
         when 'latitude_longitude'
+          $('#zip-code-div').hide()
+          $('#city-state-div').hide()
+#          $('#lat-long-div').hide()
+
           latitude    = $('#latitude').val()
           longitude   = $('#longitude').val()
 

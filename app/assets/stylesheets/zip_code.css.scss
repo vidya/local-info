@@ -20,6 +20,19 @@
   margin-bottom: 10px;
 }
 
+#query-table .td-compact {
+  width: 10px;
+  border-width: 0px;
+}
+#query-table .td-centered {
+  text-align: left;
+  border-width: 0px;
+}
+
+#query-table .td-centered label {
+  padding-top: 2px;
+}
+
 #query-list {
   list-style-type: none;
 }
