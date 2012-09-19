@@ -1,16 +1,14 @@
 module ZipCodeHelper
   class Locality
-    MILES_PEradian_ARC_DEGREE = 69.09
+    MILES_PER_ARC_DEGREE  = 69.09
 
     def initialize(lat, long, radius)
-      @center_lat = lat.to_f
-      @center_long = long.to_f
-      @radius = radius.to_f
+      @center_lat         = lat.to_f
+      @center_long        = long.to_f
+      @radius             = radius.to_f
 
-      @rad_center_lat = radians @center_lat
-      @rad_center_long = radians @center_long
-
-      puts "initialize(): center = #{@center.inspect}"
+      @rad_center_lat     = radians @center_lat
+      @rad_center_long    = radians @center_long
     end
 
     #---- getting a list of neighboring zipcodes  -----------
@@ -22,14 +20,10 @@ module ZipCodeHelper
   	def find_zip_codes
   	  west_long, east_long, south_lat, north_lat =  calc_geo_rect
 
-      # zip_codes = [zip codes within given radius of (lat, long)]
-      ZipCode.all(:conditions =>
-          ["longitude  > ? and longitude < ?
-          and latitude > ? and latitude < ?",
-          west_long, east_long, south_lat, north_lat]).select do |zc|
+      zc_list = ZipCode.all(:conditions => "    longitude > #{west_long} and longitude < #{east_long}
+                                            and latitude  > #{south_lat} and latitude  < #{north_lat}")
 
-  	    distance(zc.latitude.to_f, zc.longitude.to_f) <= @radius
-      end
+      zc_list.select { |zc| distance(zc.latitude.to_f, zc.longitude.to_f) <= @radius }
   	end
 
     def print_neighbors(msg, nzc)
@@ -52,13 +46,13 @@ module ZipCodeHelper
     # geo_rect: 'rectangle' on earth's surface specified by
     #           [west_long, east_long, south_lat, north_lat]
     def calc_geo_rect
-  	  deg_radius = (@radius / MILES_PEradian_ARC_DEGREE).ceil
+  	  deg_radius = (@radius / MILES_PER_ARC_DEGREE).ceil
 
-  	  west_long = (@center_long - deg_radius).floor
-  	  east_long = (@center_long + deg_radius).ceil
+  	  west_long     = (@center_long - deg_radius).floor
+  	  east_long     = (@center_long + deg_radius).ceil
 
-  	  south_lat = (@center_lat - deg_radius).floor
-  	  north_lat = (@center_lat + deg_radius).ceil
+  	  south_lat     = (@center_lat - deg_radius).floor
+  	  north_lat     = (@center_lat + deg_radius).ceil
 
   	  [west_long, east_long, south_lat, north_lat]
     end
@@ -72,15 +66,13 @@ module ZipCodeHelper
   	end
 
   	# algorithm adapted from http://zips.sourceforge.net/#dist_calc
-  	def distance(dest_latitude, dest_longitude)
+    def distance(dest_latitude, dest_longitude)
       rad_dest_latitude = radians dest_latitude
-      rad_dest_longitude = radians dest_longitude
 
-  	  dist = (  Math::sin(@rad_center_lat) * Math::sin(rad_dest_latitude) +
-  	            Math::cos(@rad_center_lat) * Math::cos(rad_dest_latitude) *
-                Math::cos(radians(@center_long - dest_longitude)))
+  	  dist    = Math::sin(@rad_center_lat) * Math::sin(rad_dest_latitude)
+      dist   += Math::cos(@rad_center_lat) * Math::cos(rad_dest_latitude) * Math::cos(radians(@center_long - dest_longitude))
 
-  	  degrees(Math::acos(dist)) * MILES_PEradian_ARC_DEGREE
+  	  degrees(Math::acos(dist)) * MILES_PER_ARC_DEGREE
   	end
   end
 end
