@@ -4,9 +4,17 @@ h1 Neighboring zip codes
 
 #zip-code-query
   ul#query-list
-    li latitude = #{@query[:latitude]}
-    li longitude = #{@query[:longitude]}
-    li radius = #{@query[:radius]}
+    li query_type   = #{@query[:query_type]}
+
+    li zip_code     = #{@query[:zip_code]}
+
+    li city         = #{@query[:city]}
+    li state        = #{@query[:state]}
+
+    li latitude     = #{@query[:latitude]}
+    li longitude    = #{@query[:longitude]}
+
+    li radius       = #{@query[:radius]}
 
 ul
   - @zc_list.each do |zc|

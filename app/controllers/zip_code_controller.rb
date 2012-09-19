@@ -4,18 +4,19 @@ class ZipCodeController < ApplicationController
 
   def nearby_zip_codes
     logger.info "87: params = #{params.inspect}"
-    #binding.pry
-
-    #lat = 37
-    #long = -122
-    #radius = 20
 
     @query = {
-      :latitude      => params[:latitude],
-      :longitude     => params[:longitude],
-      :radius        => params[:radius]
+      :query_type     => params[:query_type],
+
+      :zip_code       => params[:zip_code],
+      :city           => params[:city],
+      :state          => params[:state],
+
+      :latitude       => params[:latitude],
+      :longitude      => params[:longitude],
+      :radius         => params[:radius]
     }
 
-    @zc_list = ZipCode.neighbors params[:latitude], params[:longitude], params[:radius]
+    @zc_list = ZipCode.neighbors @query
   end
 end
