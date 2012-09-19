@@ -1,6 +1,6 @@
 module ZipCodeHelper
   class Locality
-    MILES_PER_ARC_DEGREE = 69.09
+    MILES_PEradian_ARC_DEGREE = 69.09
 
     def initialize(lat, long, radius)
       @center_lat = lat.to_f
@@ -52,7 +52,7 @@ module ZipCodeHelper
     # geo_rect: 'rectangle' on earth's surface specified by
     #           [west_long, east_long, south_lat, north_lat]
     def calc_geo_rect
-  	  deg_radius = (@radius / MILES_PER_ARC_DEGREE).ceil
+  	  deg_radius = (@radius / MILES_PEradian_ARC_DEGREE).ceil
 
   	  west_long = (@center_long - deg_radius).floor
   	  east_long = (@center_long + deg_radius).ceil
@@ -72,16 +72,15 @@ module ZipCodeHelper
   	end
 
   	# algorithm adapted from http://zips.sourceforge.net/#dist_calc
-  	def distance(lat_B, long_B)
-      r_lat_B = radians lat_B
-      r_long_B = radians long_B
+  	def distance(dest_latitude, dest_longitude)
+      rad_dest_latitude = radians dest_latitude
+      rad_dest_longitude = radians dest_longitude
 
-  	  dist = (  Math::sin(@rad_center_lat) * Math::sin(r_lat_B) +
-  	            Math::cos(@rad_center_lat) * Math::cos(r_lat_B) *
-                Math::cos(radians(@center_long - long_B)))
+  	  dist = (  Math::sin(@rad_center_lat) * Math::sin(rad_dest_latitude) +
+  	            Math::cos(@rad_center_lat) * Math::cos(rad_dest_latitude) *
+                Math::cos(radians(@center_long - dest_longitude)))
 
-  	  degrees(Math::acos(dist)) * MILES_PER_ARC_DEGREE
+  	  degrees(Math::acos(dist)) * MILES_PEradian_ARC_DEGREE
   	end
   end
-
 end
