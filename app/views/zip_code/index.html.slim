@@ -2,15 +2,15 @@ h1 Show neighbors
 
 #query_method
   table.table.table-condensed.table-bordered#query-table
-    tr
+    tr.query-row
       td.td-compact = radio_button_tag 'query_method', "city_state", false, :class => "query-type"
       td.td-centered = label_tag 'city, state'
 
-    tr
+    tr.query-row
       td.td-compact = radio_button_tag 'query_method', "zip_code", false, :class => "query-type"
       td.td-centered = label_tag 'zip code'
 
-    tr
+    tr.query-row
       td.td-compact = radio_button_tag 'query_method', "latitude_longitude", true, :class => "query-type"
       td.td-centered = label_tag 'latitude, longitude'
 
@@ -18,8 +18,6 @@ h1 Show neighbors
   span
     = label_tag 'Zip code'
     = text_field_tag 'zip_code', '95367', :maxlength => 8, :size => 8, :id => 'zip-code', :class => "query-params"
-
-/hr
 
 #city-state-div
   span
@@ -30,8 +28,6 @@ h1 Show neighbors
     = label_tag 'State'
     = text_field_tag 'city', 'California', :maxlength => 20, :size => 20, :id => 'state', :class => "query-params"
 
-/hr
-
 #lat-long-div
   span
     = label_tag 'latitude'
@@ -41,12 +37,10 @@ h1 Show neighbors
     = label_tag 'longitude'
     = text_field_tag 'longitude', '-122', :maxlength => 8, :size => 8, :id => 'longitude', :class => "query-params"
 
-/hr
-
 #query-div
-span
-  = label_tag 'radius'
-  = text_field_tag 'longitude', '20', :maxlength => 8, :size => 8, :id => 'radius', :class => "query-params"
+  span
+    = label_tag 'radius'
+    = text_field_tag 'longitude', '20', :maxlength => 8, :size => 8, :id => 'radius', :class => "query-params"
 
-br = link_to 'Show zip codes', '/zip_code/nearby_zip_codes', :id => 'show-zip-codes', :class => 'btn-zip-code btn btn-small'
+  br = link_to 'Show zip codes', '/zip_code/nearby_zip_codes', :id => 'show-zip-codes', :class => 'btn-zip-code btn btn-small'
 

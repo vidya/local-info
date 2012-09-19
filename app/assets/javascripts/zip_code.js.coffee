@@ -16,7 +16,6 @@ $ ->
 
       switch this.value
         when 'zip_code'
-#          $('#zip-code-div').hide()
           $('#city-state-div').hide()
           $('#lat-long-div').hide()
 
@@ -25,7 +24,6 @@ $ ->
 
         when 'city_state'
           $('#zip-code-div').hide()
-#          $('#city-state-div').hide()
           $('#lat-long-div').hide()
 
           console.log 'CITY_STATE'
@@ -38,7 +36,6 @@ $ ->
         when 'latitude_longitude'
           $('#zip-code-div').hide()
           $('#city-state-div').hide()
-#          $('#lat-long-div').hide()
 
           latitude    = $('#latitude').val()
           longitude   = $('#longitude').val()

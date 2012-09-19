@@ -2,17 +2,19 @@ h1 Neighboring zip codes
 
 #zip-code-query
   ul#query-list
-    li query_type   = #{@query[:query_type]}
+    - case @query[:query_type]
+      - when 'zip_code'
+      li zip_code     = #{@query[:zip_code]}
 
-    li zip_code     = #{@query[:zip_code]}
+      - when 'city_state'
+      li city         = #{@query[:city]}
+      li state        = #{@query[:state]}
 
-    li city         = #{@query[:city]}
-    li state        = #{@query[:state]}
+      - when 'latitude_longitude'
+      li latitude     = #{@query[:latitude]}
+      li longitude    = #{@query[:longitude]}
 
-    li latitude     = #{@query[:latitude]}
-    li longitude    = #{@query[:longitude]}
-
-    li radius       = #{@query[:radius]}
+    li radius         = #{@query[:radius]}
 
 ul
   - @zc_list.each do |zc|
@@ -21,4 +23,3 @@ ul
         = link_to "#{zc.city}, #{zc.state_code}  #{zc.zip}", zc.zip
         p (latitude, longitude)
           = (#{zc.latitude}, #{zc.longitude})
-
