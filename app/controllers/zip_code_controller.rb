@@ -17,6 +17,7 @@ class ZipCodeController < ApplicationController
       :radius         => params[:radius]
     }
 
-    @zc_list = ZipCode.neighbors @query
+    @zc_list = ZipCode.neighbors(@query)
+    @zc_list = Kaminari.paginate_array(@zc_list).page(params[:page])
   end
 end
