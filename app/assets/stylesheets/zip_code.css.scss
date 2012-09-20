@@ -2,8 +2,13 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.zip-code-li {
-  list-style-type: none;
+.border-thin-black {
+  border: 1px solid black;
+  color: #fafad2;
+}
+
+.zip-code-div {
+  margin-bottom: 1px;
 }
 
 .zip-code-area {

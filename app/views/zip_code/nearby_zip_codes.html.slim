@@ -18,10 +18,11 @@ h1 Neighboring zip codes
 
     li radius         = #{@query[:radius]}
 
-ul
-  - @zc_list.each do |zc|
-    li.zip-code-li
-      .zip-code-area
-        = link_to "#{zc.city}, #{zc.state_code}  #{zc.zip}", zc.zip
-        p (latitude, longitude)
-          = (#{zc.latitude}, #{zc.longitude})
+- @zc_list.each do |zc|
+  .zip-code-div.border-thin-black
+    = link_to "#{zc.city}, #{zc.state_code}  #{zc.zip}", zc.zip
+    p (latitude, longitude)
+      = (#{zc.latitude}, #{zc.longitude})
+
+= paginate @zc_list
+

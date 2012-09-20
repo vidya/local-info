@@ -3,8 +3,12 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 $ ->
-  $('.zip-code-li > div').css       "color",        "black"
-  $('.zip-code-li:even > div').css  "background",   "#c0d0b0"
+#  $('.zip-code-div > div').css       "color",        "black"
+#  $('.zip-code-div:even > div').css  "background",   "#c0d0b0"
+
+  $('.zip-code-div').css       "color",        "black"
+  $('.zip-code-div:even').css  "background",   "#c0d0b0"
+  $('.zip-code-div:odd').css  "background",   "lightgoldenrodyellow"
 
   display_query_fields = ->
     $('.query-type:checked').each ->
