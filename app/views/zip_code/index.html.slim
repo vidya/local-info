@@ -3,7 +3,7 @@ h1 Show neighbors
 #query_method
   table.table.table-condensed.table-bordered#query-table
     tr.query-row
-      td.td-compact = radio_button_tag 'query_method', "city_state", false, :class => "query-type"
+      td.td-compact = radio_button_tag 'query_method', "city_state", true, :class => "query-type"
       td.td-centered = label_tag 'city, state'
 
     tr.query-row
@@ -11,7 +11,7 @@ h1 Show neighbors
       td.td-centered = label_tag 'zip code'
 
     tr.query-row
-      td.td-compact = radio_button_tag 'query_method', "latitude_longitude", true, :class => "query-type"
+      td.td-compact = radio_button_tag 'query_method', "latitude_longitude", false, :class => "query-type"
       td.td-centered = label_tag 'latitude, longitude'
 
 #zip-code-div
@@ -22,7 +22,7 @@ h1 Show neighbors
 #city-state-div
   span
     = label_tag 'City'
-    = text_field_tag 'city', 'Cupertino', :maxlength => 20, :size => 20, :id => 'city', :class => "query-params"
+    = text_field_tag 'city', 'Saratoga', :maxlength => 20, :size => 20, :id => 'city', :class => "query-params"
 
   span
     = label_tag 'State'

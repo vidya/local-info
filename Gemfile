@@ -30,6 +30,8 @@ gem "hub", ">= 1.10.2", :require => nil, :group => [:development]
 gem 'pry'
 gem 'pry-nav'
 
+gem 'kaminari'
+
 group :test, :development do
   gem 'minitest-rails'
   gem 'minitest-spec-rails'
