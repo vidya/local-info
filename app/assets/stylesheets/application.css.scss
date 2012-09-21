@@ -18,7 +18,7 @@
   background-color: $content-background-color;
   padding: 20px;
   margin: 0 -20px; /* negative indent the amount of the padding to maintain the grid system */
-  -webkit-border-radius: 0 0 6px rou6px;
+  -webkit-border-radius: 0 0 6px 6px;
   -moz-border-radius: 0 0 6px 6px;
   border-radius: 0 0 6px 6px;
   -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.15);
@@ -29,6 +29,7 @@
 #top-menu-local-info {
   background-color: #ffb6c1;
   margin: -4px;
+
   @include border-style-util(blue, 2px);
 }
 
@@ -38,19 +39,5 @@
 
 .main-page-body {
   background-color: $content-background-color;
-
 }
 
-.td-align-right {
-  padding-left: 10px;
-  text-align: right;
-}
-
-.float-left-div {
-  float: left;
-}
-
-.clear-div {
-  clear: both;
-  float: left;
-}

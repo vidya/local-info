@@ -31,17 +31,23 @@
   margin-left: 8px;
 }
 
-#query-table .td-compact {
-  width: 10px;
-  border-width: 0px;
-}
-#query-table .td-centered {
-  text-align: left;
-  border-width: 0px;
-}
+#query-table {
+  @include no-border;
 
-#query-table .td-centered label {
-  padding-top: 2px;
+  .td-compact {
+    width: 10px;
+    @include no-border;
+  }
+
+  .td-centered {
+    text-align: left;
+
+    @include no-border;
+
+    label {
+      padding-top: 2px;
+    }
+  }
 }
 
 #query-list {
@@ -50,8 +56,4 @@
 
 .btn-zip-code {
     background: #90ee90;
-}
-
-#query-table {
-  border-width: 0px;
 }

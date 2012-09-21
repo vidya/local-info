@@ -5,6 +5,24 @@ $content-background-color: #e0ffff;
   border: $width solid $color;
 }
 
+@mixin no-border {
+  border-width: 0px;
+}
+
 .border-thin-black {
   @include border-style-util(black);
+}
+
+.td-align-right {
+  padding-left: 10px;
+  text-align: right;
+}
+
+.float-left-div {
+  float: left;
+}
+
+.clear-div {
+  clear: both;
+  float: left;
 }
