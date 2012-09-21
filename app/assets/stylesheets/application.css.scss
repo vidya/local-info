@@ -13,7 +13,6 @@
 */
 
 .content {
-  //background-color: #eee;
   background-color: #e0ffff;
   padding: 20px;
   margin: 0 -20px; /* negative indent the amount of the padding to maintain the grid system */
@@ -26,12 +25,17 @@
 }
 
 #top-menu-local-info {
-  background-color: #ffdead;
+  background-color: #ffb6c1;
 }
 
 .td-chirp-label {
   text-align: center;
   vertical-align: middle;
+}
+
+.td-align-right {
+  padding-left: 10px;
+  text-align: right;
 }
 
 .float-left-div {

@@ -3,26 +3,70 @@ h1 Neighboring zip codes
 = paginate @zc_list
 
 #zip-code-query
-  ul#query-list
+  #zip-code-query-inner
     - case @query[:query_type]
       - when 'zip_code'
-      li zip_code     = #{@query[:zip_code]}
+      table
+        tr
+          td                  = 'zip code:'
+          td.td-align-right   = "#{@query[:zip_code]}"
 
-      - when 'city_state'
-      li city         = #{@query[:city]}
-      li state        = #{@query[:state]}
+        tr
+          td                  = 'radius:'
+          td.td-align-right   = "#{@query[:radius]}"
 
-      - when 'latitude_longitude'
-      li latitude     = #{@query[:latitude]}
-      li longitude    = #{@query[:longitude]}
+    - when 'city_state'
+      table
+        tr
+          td                  = 'city:'
+          td.td-align-right   = "#{@query[:city]}"
 
-    li radius         = #{@query[:radius]}
+        tr
+          td                  = 'state:'
+          td.td-align-right   = "#{@query[:state]}"
+
+        tr
+          td                  = 'radius:'
+          td.td-align-right   = "#{@query[:radius]}"
+
+    - when 'latitude_longitude'
+      table
+        tr
+          td                  = 'latitude:'
+          td.td-align-right   = "#{@query[:latitude]}"
+
+        tr
+          td                  = 'longitude:'
+          td.td-align-right   = "#{@query[:longitude]}"
+
+        tr
+          td                  = 'radius:'
+          td.td-align-right   = "#{@query[:radius]}"
+
+
+        /
+        /li city         = #{@query[:city]}
+        /li state        = #{@query[:state]}
+        /
+        /- when 'latitude_longitude'
+        /li latitude     = #{@query[:latitude]}
+        /li longitude    = #{@query[:longitude]}
+
+        /li radius         = #{@query[:radius]}
 
 - @zc_list.each do |zc|
   .zip-code-div.border-thin-black
-    = link_to "#{zc.city}, #{zc.state_code}  #{zc.zip}", zc.zip
-    p (latitude, longitude)
-      = (#{zc.latitude}, #{zc.longitude})
+    .zip-code-inner.pagination
+      = link_to "#{zc.city}, #{zc.state_code}  #{zc.zip}", zc.zip
+
+      table
+        tr
+          td                  = "latitude:"
+          td.td-align-right   = "#{zc.latitude}"
+
+        tr
+          td                  = "longitude:"
+          td.td-align-right   = "#{zc.longitude}"
 
 = paginate @zc_list
 
