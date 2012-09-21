@@ -43,22 +43,9 @@ h1 Neighboring zip codes
           td                  = 'radius:'
           td.td-align-right   = "#{@query[:radius]}"
 
-
-        /
-        /li city         = #{@query[:city]}
-        /li state        = #{@query[:state]}
-        /
-        /- when 'latitude_longitude'
-        /li latitude     = #{@query[:latitude]}
-        /li longitude    = #{@query[:longitude]}
-
-        /li radius         = #{@query[:radius]}
-
 - @zc_list.each do |zc|
   .zip-code-div.border-thin-black
-    .zip-code-inner.pagination
-      = link_to "#{zc.city}, #{zc.state_code}  #{zc.zip}", zc.zip
-
+    .zip-code-inner
       table
         tr
           td                  = "latitude:"
@@ -68,5 +55,6 @@ h1 Neighboring zip codes
           td                  = "longitude:"
           td.td-align-right   = "#{zc.longitude}"
 
-= paginate @zc_list
+      = link_to "#{zc.city}, #{zc.state_code}  #{zc.zip}", zc.zip
 
+= paginate @zc_list
