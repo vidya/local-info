@@ -1,0 +1,10 @@
+
+$content-background-color: #e0ffff;
+
+@mixin border-style-util($color, $width: 1px) {
+  border: $width solid $color;
+}
+
+.border-thin-black {
+  @include border-style-util(black);
+}

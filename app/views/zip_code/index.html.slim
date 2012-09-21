@@ -1,45 +1,46 @@
-h1 Show neighbors
+.main-page-body
+  h1 Show neighbors
 
-#query_method
-  table.table.table-condensed.table-bordered#query-table
-    tr.query-row
-      td.td-compact = radio_button_tag 'query_method', "city_state", true, :class => "query-type"
-      td.td-centered = label_tag 'city, state'
+  #query_method
+    table.table.table-condensed.table-bordered#query-table
+      tr.query-row
+        td.td-compact = radio_button_tag 'query_method', "city_state", true, :class => "query-type"
+        td.td-centered = label_tag 'city, state'
 
-    tr.query-row
-      td.td-compact = radio_button_tag 'query_method', "zip_code", false, :class => "query-type"
-      td.td-centered = label_tag 'zip code'
+      tr.query-row
+        td.td-compact = radio_button_tag 'query_method', "zip_code", false, :class => "query-type"
+        td.td-centered = label_tag 'zip code'
 
-    tr.query-row
-      td.td-compact = radio_button_tag 'query_method', "latitude_longitude", false, :class => "query-type"
-      td.td-centered = label_tag 'latitude, longitude'
+      tr.query-row
+        td.td-compact = radio_button_tag 'query_method', "latitude_longitude", false, :class => "query-type"
+        td.td-centered = label_tag 'latitude, longitude'
 
-#zip-code-div
-  span
-    = label_tag 'Zip code'
-    = text_field_tag 'zip_code', '95367', :maxlength => 8, :size => 8, :id => 'zip-code', :class => "query-params"
+  #zip-code-div
+    span
+      = label_tag 'Zip code'
+      = text_field_tag 'zip_code', '95367', :maxlength => 8, :size => 8, :id => 'zip-code', :class => "query-params"
 
-#city-state-div
-  span
-    = label_tag 'City'
-    = text_field_tag 'city', 'Saratoga', :maxlength => 20, :size => 20, :id => 'city', :class => "query-params"
+  #city-state-div
+    span
+      = label_tag 'City'
+      = text_field_tag 'city', 'Saratoga', :maxlength => 20, :size => 20, :id => 'city', :class => "query-params"
 
-  span
-    = label_tag 'State'
-    = text_field_tag 'city', 'California', :maxlength => 20, :size => 20, :id => 'state', :class => "query-params"
+    span
+      = label_tag 'State'
+      = text_field_tag 'city', 'California', :maxlength => 20, :size => 20, :id => 'state', :class => "query-params"
 
-#lat-long-div
-  span
-    = label_tag 'latitude'
-    = text_field_tag 'latitude', '37', :maxlength => 8, :size => 8, :id => 'latitude', :class => "query-params"
+  #lat-long-div
+    span
+      = label_tag 'latitude'
+      = text_field_tag 'latitude', '37', :maxlength => 8, :size => 8, :id => 'latitude', :class => "query-params"
 
-  span
-    = label_tag 'longitude'
-    = text_field_tag 'longitude', '-122', :maxlength => 8, :size => 8, :id => 'longitude', :class => "query-params"
+    span
+      = label_tag 'longitude'
+      = text_field_tag 'longitude', '-122', :maxlength => 8, :size => 8, :id => 'longitude', :class => "query-params"
 
-#query-div
-  span
-    = label_tag 'radius'
-    = text_field_tag 'longitude', '20', :maxlength => 8, :size => 8, :id => 'radius', :class => "query-params"
+  #query-div
+    span
+      = label_tag 'radius'
+      = text_field_tag 'longitude', '20', :maxlength => 8, :size => 8, :id => 'radius', :class => "query-params"
 
-  br = link_to 'Show neighbors', '/zip_code/nearby_zip_codes', :id => 'show-zip-codes', :class => 'btn-zip-code btn btn-small'
+    br = link_to 'Show neighbors', '/zip_code/nearby_zip_codes', :id => 'show-zip-codes', :class => 'btn-zip-code btn btn-small'

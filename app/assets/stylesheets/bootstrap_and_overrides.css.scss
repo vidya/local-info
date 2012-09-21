@@ -1,3 +1,14 @@
 @import "bootstrap";
-body { padding-top: 60px; }
+@import "util_styles";
+
+body {
+  padding-top: 30px;
+  background-color: $content-background-color;
+
+}
+
+.content {
+  padding: 10px;
+}
+
 @import "bootstrap-responsive";
