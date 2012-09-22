@@ -29,19 +29,16 @@
 #top-menu-local-info {
   background-color: #ffb6c1;
   margin: -4px;
+  width: 100%;
 
   @include border-style-util(blue, 2px);
 }
 
 #main {
-  //margin-top: -23px;
   margin-top: 30px;
 }
 
 .main-page-body {
   background-color: $content-background-color;
-  //margin-top:10px;
-  //padding-top: 20px;
-  //@include border-style-util(blue, 2px);
 }
 
