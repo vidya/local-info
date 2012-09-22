@@ -2,13 +2,17 @@
 @import "util_styles";
 
 body {
-  padding-top: 30px;
+  //padding-top: 30px;
   background-color: $content-background-color;
   //background-color: #d3d3d3;
 }
 
 .content {
-  padding: 10px;
+  padding: 0px;
+  margin-top: 8px;
+  //background-color: #d3d3d3;
+  background-color: $content-background-color;
+  //border: none;
 }
 
 @import "bootstrap-responsive";
