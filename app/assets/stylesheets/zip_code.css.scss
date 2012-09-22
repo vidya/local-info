@@ -6,6 +6,7 @@
 
 .zip-code-div {
   margin-bottom: 1px;
+  padding: 4px;
 }
 
 .zip-code-area {
@@ -15,7 +16,7 @@
 }
 
 .zip-code-inner {
-  padding: 4px;
+  //padding: 4px;
 }
 
 #zip-code-query {
@@ -50,9 +51,9 @@
   }
 }
 
-#query-list {
-  list-style-type: none;
-}
+//#query-list {
+//  list-style-type: none;
+//}
 
 .btn-zip-code {
     background: #90ee90;

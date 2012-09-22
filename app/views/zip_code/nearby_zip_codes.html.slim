@@ -8,53 +8,53 @@ h1 Neighboring zip codes
       - when 'zip_code'
       table
         tr
-          td                  = 'zip code:'
-          td.td-align-right   = "#{@query[:zip_code]}"
+          td                    zip code:
+          td.td-align-right     #{@query[:zip_code]}
 
         tr
-          td                  = 'radius:'
-          td.td-align-right   = "#{@query[:radius]}"
+          td                    radius:
+          td.td-align-right     #{@query[:radius]}
 
     - when 'city_state'
       table
         tr
-          td                  = 'city:'
-          td.td-align-right   = "#{@query[:city]}"
+          td                    city:
+          td.td-align-right     #{@query[:city]}
 
         tr
-          td                  = 'state:'
-          td.td-align-right   = "#{@query[:state]}"
+          td                    state:
+          td.td-align-right     #{@query[:state]}
 
         tr
-          td                  = 'radius:'
-          td.td-align-right   = "#{@query[:radius]}"
+          td                    radius:
+          td.td-align-right     #{@query[:radius]}
 
     - when 'latitude_longitude'
       table
         tr
-          td                  = 'latitude:'
-          td.td-align-right   = "#{@query[:latitude]}"
+          td                    latitude:
+          td.td-align-right     #{@query[:latitude]}
 
         tr
-          td                  = 'longitude:'
-          td.td-align-right   = "#{@query[:longitude]}"
+          td                    longitude:
+          td.td-align-right     #{@query[:longitude]}
 
         tr
-          td                  = 'radius:'
-          td.td-align-right   = "#{@query[:radius]}"
+          td                    radius:
+          td.td-align-right     #{@query[:radius]}
 
 - @zc_list.each do |zc|
   .zip-code-div.border-thin-black
-    .zip-code-inner
-      table
-        tr
-          td                  = "latitude:"
-          td.td-align-right   = "#{zc.latitude}"
+    /.zip-code-inner
+    table
+      tr
+        td                    latitude:
+        td.td-align-right     #{zc.latitude}
 
-        tr
-          td                  = "longitude:"
-          td.td-align-right   = "#{zc.longitude}"
+      tr
+        td                    longitude:
+        td.td-align-right     #{zc.longitude}
 
-      = link_to "#{zc.city}, #{zc.state_code}  #{zc.zip}", zc.zip
+    = link_to "#{zc.city}, #{zc.state_code}  #{zc.zip}", zc.zip
 
 = paginate @zc_list

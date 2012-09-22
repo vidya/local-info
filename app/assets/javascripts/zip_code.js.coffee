@@ -3,9 +3,6 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 $ ->
-#  $('.zip-code-div > div').css       "color",        "black"
-#  $('.zip-code-div:even > div').css  "background",   "#c0d0b0"
-
   $('.zip-code-div').css       "color",        "black"
   $('.zip-code-div:even').css  "background",   "#c0d0b0"
   $('.zip-code-div:odd').css  "background",   "lightgoldenrodyellow"
