@@ -28,17 +28,19 @@
 
 #top-menu-local-info {
   background-color: #ffb6c1;
-  margin: -4px;
-  width: 100%;
+  margin: 4px;
+  width: 98%;
+  padding-left: 10px;
 
+  font-size: 1.4em;
+  font-color: #8888ff;
   @include border-style-util(blue, 2px);
 }
 
 #main {
   margin-top: 30px;
-}
-
-.main-page-body {
   background-color: $content-background-color;
+  margin-left: 10px;
+  padding-top: 20px;
 }
 
