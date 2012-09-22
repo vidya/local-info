@@ -15,10 +15,6 @@
   color: blue;
 }
 
-.zip-code-inner {
-  //padding: 4px;
-}
-
 #zip-code-query {
   background: #ffdead;
   @include border-style-util(green);
@@ -28,8 +24,8 @@
   margin-bottom: 5px;
 }
 
-#zip-code-query-inner {
-  margin-left: 8px;
+.input-query-table {
+  margin-left: 5px;
 }
 
 #query-table {
@@ -50,10 +46,6 @@
     }
   }
 }
-
-//#query-list {
-//  list-style-type: none;
-//}
 
 .btn-zip-code {
     background: #90ee90;

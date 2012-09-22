@@ -1,0 +1,39 @@
+#zip-code-query
+  - case @query[:query_type]
+    - when 'zip_code'
+    table.input-query-table
+      tr
+        td                    zip code:
+        td.td-align-right     #{@query[:zip_code]}
+
+      tr
+        td                    radius:
+        td.td-align-right     #{@query[:radius]}
+
+  - when 'city_state'
+    table.input-query-table
+      tr
+        td                    city:
+        td.td-align-right     #{@query[:city]}
+
+      tr
+        td                    state:
+        td.td-align-right     #{@query[:state]}
+
+      tr
+        td                    radius:
+        td.td-align-right     #{@query[:radius]}
+
+  - when 'latitude_longitude'
+    table.input-query-table
+      tr
+        td                    latitude:
+        td.td-align-right     #{@query[:latitude]}
+
+      tr
+        td                    longitude:
+        td.td-align-right     #{@query[:longitude]}
+
+      tr
+        td                    radius:
+        td.td-align-right     #{@query[:radius]}

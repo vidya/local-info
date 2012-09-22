@@ -2,50 +2,10 @@ h1 Neighboring zip codes
 
 = paginate @zc_list
 
-#zip-code-query
-  #zip-code-query-inner
-    - case @query[:query_type]
-      - when 'zip_code'
-      table
-        tr
-          td                    zip code:
-          td.td-align-right     #{@query[:zip_code]}
-
-        tr
-          td                    radius:
-          td.td-align-right     #{@query[:radius]}
-
-    - when 'city_state'
-      table
-        tr
-          td                    city:
-          td.td-align-right     #{@query[:city]}
-
-        tr
-          td                    state:
-          td.td-align-right     #{@query[:state]}
-
-        tr
-          td                    radius:
-          td.td-align-right     #{@query[:radius]}
-
-    - when 'latitude_longitude'
-      table
-        tr
-          td                    latitude:
-          td.td-align-right     #{@query[:latitude]}
-
-        tr
-          td                    longitude:
-          td.td-align-right     #{@query[:longitude]}
-
-        tr
-          td                    radius:
-          td.td-align-right     #{@query[:radius]}
+= render 'input_query'
 
 - @zc_list.each do |zc|
   .zip-code-div.border-thin-black
-    /.zip-code-inner
     table
       tr
         td                    latitude:
