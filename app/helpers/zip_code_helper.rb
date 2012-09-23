@@ -2,6 +2,9 @@ module ZipCodeHelper
   class Locality
     MILES_PER_ARC_DEGREE  = 69.09
 
+    # to ensure that acos() is not given an argument > 1
+    DIST_DELTA_FOR_ACOS   = 0.00005
+
     def initialize(lat, long, radius)
       @center_lat         = lat.to_f
       @center_long        = long.to_f
@@ -25,20 +28,6 @@ module ZipCodeHelper
 
       zc_list.select { |zc| distance(zc.latitude.to_f, zc.longitude.to_f) <= @radius }
   	end
-
-    def print_neighbors(msg, nzc)
-  	  puts
-  	  puts "-------- #{msg} { ----------"
-  	  puts "nzc.length = #{nzc.length}"
-
-  	  nzc.each do |zc|
-  	    puts "[id, lat, long, zipcode, city, state] = [#{zc.id}, #{zc.latitude}, #{zc.longitude}, #{zc.zip}, #{zc.city}, #{zc.state}]"
-  	  end
-
-  	  puts "nzc.length = #{nzc.length}"
-  	  puts "-------- } #{msg} { ----------"
-  	  puts
-    end
 
     #--------- private helpers --------------
     private
@@ -71,6 +60,19 @@ module ZipCodeHelper
 
   	  dist    = Math::sin(@rad_center_lat) * Math::sin(rad_dest_latitude)
       dist   += Math::cos(@rad_center_lat) * Math::cos(rad_dest_latitude) * Math::cos(radians(@center_long - dest_longitude))
+
+      #binding.pry
+      #puts "dest_latitude = #{dest_latitude}"
+      #puts "dest_longitude = #{dest_longitude}"
+      #puts "dist = #{dist}"
+
+      if dist > 1
+        if dist < (1 + DIST_DELTA_FOR_ACOS)
+          dist = 1
+        else
+          raise "(dist = #{dist}) > 1" if dist > 1
+        end
+      end
 
   	  degrees(Math::acos(dist)) * MILES_PER_ARC_DEGREE
   	end
