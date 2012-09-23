@@ -23,6 +23,8 @@ class ZipCodeController < ApplicationController
       flash.clear
 
       @zc_list = ZipCode.neighbors(@query)
+      @zc_count = @zc_list.size
+
       @zc_list = Kaminari.paginate_array(@zc_list).page(params[:page])
 
     else

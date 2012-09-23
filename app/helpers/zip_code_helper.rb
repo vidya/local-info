@@ -101,11 +101,6 @@ module ZipCodeHelper
   	  dist    = Math::sin(@rad_center_lat) * Math::sin(rad_dest_latitude)
       dist   += Math::cos(@rad_center_lat) * Math::cos(rad_dest_latitude) * Math::cos(radians(@center_long - dest_longitude))
 
-      #binding.pry
-      #puts "dest_latitude = #{dest_latitude}"
-      #puts "dest_longitude = #{dest_longitude}"
-      #puts "dist = #{dist}"
-
       if dist > 1
         if dist < (1 + DELTA_DIFF)
           dist = 1
