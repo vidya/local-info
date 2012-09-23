@@ -13,20 +13,23 @@ class ZipCode < ActiveRecord::Base
         zc_list   = zip_codes_from_lat_long zc_entry.latitude, zc_entry.longitude, query[:radius]
 
       when 'city_state'
-        # find all zip codes in specified (city, state)
-        zc_entries    = where(:city => query[:city], :state => query[:state]).all
-
-        # find (latitude, longitude) co-ordinates for each zip code
-        lat_long_list = zc_entries.inject([]) { |list, ent| list << [ent.latitude, ent.longitude] }
+        # find (latitude, longitude) co-ordinates for each zip code in city and state
+        lat_long_list = zip_codes_in_city(query[:city], query[:state]).inject([]) do |list, ent|
+          list << [ent.latitude, ent.longitude]
+        end
 
         # find zip codes within the specified distance of each (latitude, longitude) pair
-        zc_list       = zip_codes_from_lat_long_list lat_long_list, query[:radius]
+        zc_list  = zip_codes_from_lat_long_list lat_long_list, query[:radius]
 
       else
         logger.info "--- ERROR: unexpected query_type = #{query[:query_type]}"
     end
 
     zc_list
+  end
+
+  def self.zip_codes_in_city(given_city, given_state)
+    where(:city => given_city.downcase.capitalize, :state => given_state.downcase.capitalize).all
   end
 
   def self.zip_codes_from_lat_long_list(lat_long_list, radius)

@@ -1,22 +1,26 @@
 h1 Neighboring zip codes
 
-= paginate @zc_list
+- if @zc_list.nil? || @zc_list.empty?
+  = render 'input_query'
 
-= render 'input_query'
+- else
+  = paginate @zc_list
 
-- @zc_list.each do |zc|
-  .zip-code-div.border-thin-black
-    table
-      tr
-        td                    latitude:
-        td.td-align-right     #{zc.latitude}
+  = render 'input_query'
 
-      tr
-        td                    longitude:
-        td.td-align-right     #{zc.longitude}
+  - @zc_list.each do |zc|
+    .zip-code-div.border-thin-black
+      table
+        tr
+          td                    latitude:
+          td.td-align-right     #{zc.latitude}
 
-    - wiki_title = "#{zc.city}, #{zc.state_code} #{zc.zip}"
-    - wiki_entry = "http://en.wikipedia.org/wiki/#{zc.city.gsub(/ /, '_')},_#{zc.state_code.upcase}"
-    = link_to "#{wiki_title}", "#{wiki_entry}"
+        tr
+          td                    longitude:
+          td.td-align-right     #{zc.longitude}
 
-= paginate @zc_list
+      - wiki_title = "#{zc.city}, #{zc.state_code} #{zc.zip}"
+      - wiki_entry = "http://en.wikipedia.org/wiki/#{zc.city.gsub(/ /, '_')},_#{zc.state_code.upcase}"
+      = link_to "#{wiki_title}", "#{wiki_entry}"
+
+  = paginate @zc_list

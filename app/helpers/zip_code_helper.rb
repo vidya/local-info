@@ -3,7 +3,7 @@ module ZipCodeHelper
     MILES_PER_ARC_DEGREE  = 69.09
 
     # to ensure that acos() is not given an argument > 1
-    DIST_DELTA_FOR_ACOS   = 0.00005
+    DELTA_DIFF   = 0.00005
 
     def initialize(lat, long, radius)
       @center_lat         = lat.to_f
@@ -67,7 +67,7 @@ module ZipCodeHelper
       #puts "dist = #{dist}"
 
       if dist > 1
-        if dist < (1 + DIST_DELTA_FOR_ACOS)
+        if dist < (1 + DELTA_DIFF)
           dist = 1
         else
           raise "(dist = #{dist}) > 1" if dist > 1

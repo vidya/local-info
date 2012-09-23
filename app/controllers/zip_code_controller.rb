@@ -3,7 +3,7 @@ class ZipCodeController < ApplicationController
   end
 
   def nearby_zip_codes
-    logger.info "87: params = #{params.inspect}"
+    logger.info "params = #{params.inspect}"
 
     @query = {
       :query_type     => params[:query_type],
@@ -17,7 +17,14 @@ class ZipCodeController < ApplicationController
       :radius         => params[:radius]
     }
 
-    @zc_list = ZipCode.neighbors(@query)
-    @zc_list = Kaminari.paginate_array(@zc_list).page(params[:page])
+    if @query[:radius].to_f <= 0
+      flash[:error] = 'ERROR: radius needs to be greater than 0'
+
+    else
+      flash.clear
+
+      @zc_list = ZipCode.neighbors(@query)
+      @zc_list = Kaminari.paginate_array(@zc_list).page(params[:page])
+    end
   end
 end
