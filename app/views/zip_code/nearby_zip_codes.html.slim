@@ -1,9 +1,10 @@
-h1 Neighboring zip codes
 
 - if @zc_list.nil? || @zc_list.empty?
   = render 'input_query'
 
 - else
+  h1 Neighboring zip codes
+
   = paginate @zc_list
 
   = render 'input_query'

@@ -22,7 +22,7 @@ class ZipCode < ActiveRecord::Base
         zc_list  = zip_codes_from_lat_long_list lat_long_list, query[:radius]
 
       else
-        logger.info "--- ERROR: unexpected query_type = #{query[:query_type]}"
+        raise "--- ERROR: unexpected query_type = #{query[:query_type]}"
     end
 
     zc_list
@@ -48,5 +48,9 @@ class ZipCode < ActiveRecord::Base
 
   def self.valid_zip_code?(zip_code)
     where(:zip => zip_code).exists?
+  end
+
+  def self.valid_city_and_state?(given_city, given_state)
+    exists?(:city => given_city.downcase.capitalize, :state => given_state.downcase.capitalize)
   end
 end

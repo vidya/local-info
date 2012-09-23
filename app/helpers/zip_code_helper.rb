@@ -1,4 +1,44 @@
 module ZipCodeHelper
+  def valid_query?(query)
+    @query_error = nil
+
+    errors = []
+
+    case query[:query_type]
+      when 'zip_code'
+        errors  << "invalid zip code(#{query[:zip_code]})" if not ZipCode.valid_zip_code?(query[:zip_code])
+
+      when 'city_state'
+        city = query[:city]
+        state = query[:state]
+        errors  << "invalid city(#{city}) or state(#{state})" if not ZipCode.valid_city_and_state?(city, state)
+
+      when 'latitude_longitude'
+        latitude = query[:latitude].to_f
+        longitude = query[:longitude].to_f
+
+        errors  << "invalid latitude(#{latitude})" if ((latitude < -90) || (latitude > 90))
+        errors  << "invalid longitude(#{longitude})" if ((longitude < -180) || (longitude > 180))
+
+      else
+        raise "--- ERROR: unexpected query_type = #{query[:query_type]}"
+    end
+
+    errors  << 'radius needs to be greater than 0' if query[:radius].to_f <= 0
+
+    if errors.empty?
+      true
+
+    else
+      @query_error = 'ERROR(S): [' + errors.join(', ') + ']'
+      false
+    end
+  end
+
+  def get_query_error
+    @query_error
+  end
+
   class Locality
     MILES_PER_ARC_DEGREE  = 69.09
 

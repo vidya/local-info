@@ -1,4 +1,6 @@
 class ZipCodeController < ApplicationController
+  include ZipCodeHelper
+
   def index
   end
 
@@ -17,14 +19,15 @@ class ZipCodeController < ApplicationController
       :radius         => params[:radius]
     }
 
-    if @query[:radius].to_f <= 0
-      flash[:error] = 'ERROR: radius needs to be greater than 0'
-
-    else
+    if valid_query? @query
       flash.clear
 
       @zc_list = ZipCode.neighbors(@query)
       @zc_list = Kaminari.paginate_array(@zc_list).page(params[:page])
+
+    else
+      flash[:error] = get_query_error
+      render :action => :index
     end
   end
 end
