@@ -22,10 +22,10 @@ class ZipCodeController < ApplicationController
     if valid_query? @query
       flash.clear
 
-      @zc_list = ZipCode.neighbors(@query)
-      @zc_count = @zc_list.size
+      @zc_list    = ZipCode.neighbors(@query)
+      @zc_count   = @zc_list.size
 
-      @zc_list = Kaminari.paginate_array(@zc_list).page(params[:page])
+      @zc_list    = Kaminari.paginate_array(@zc_list).page(params[:page])
 
     else
       flash[:error] = query_error
@@ -40,32 +40,31 @@ class ZipCodeController < ApplicationController
     errors = []
     case query[:query_type]
       when 'zip_code'
-        errors  << "invalid zip code(#{query[:zip_code]})" if not ZipCode.valid_zip_code?(query[:zip_code])
+        zip_code   = query[:zip_code]
+        errors    << "invalid zip code (= #{zip_code})" unless ZipCode.valid_zip_code?(zip_code)
 
       when 'city_state'
-        city = query[:city]
-        state = query[:state]
-        errors  << "invalid city(#{city}) or state(#{state})" if not ZipCode.valid_city_and_state?(city, state)
+        city       = query[:city]
+        state      = query[:state]
+
+        errors    << "invalid city (= #{city}) or state (= #{state})" unless ZipCode.valid_city_and_state?(city, state)
 
       when 'latitude_longitude'
-        latitude = query[:latitude].to_f
-        longitude = query[:longitude].to_f
+        latitude   = query[:latitude].to_f
+        longitude  = query[:longitude].to_f
 
-        errors  << "invalid latitude(#{latitude})" if ((latitude < -90) || (latitude > 90))
-        errors  << "invalid longitude(#{longitude})" if ((longitude < -180) || (longitude > 180))
+        errors    << "invalid latitude (= #{latitude})" unless (-90.0..90.0).include?(latitude)
+        errors    << "invalid longitude (= #{longitude})" unless (-180.0..180.0).include?(longitude)
 
       else
         raise "--- ERROR: unexpected query_type = #{query[:query_type]}"
     end
 
-    errors  << "radius(#{query[:radius]}) needs to be greater than 0" if query[:radius].to_f <= 0
+    radius   = query[:radius]
+    errors  << "radius (= #{radius}) needs to be greater than 0" if radius.to_f <= 0
 
-    if errors.empty?
-      true
+    @query_error = 'ERROR(S): [ ' + errors.join(', ') + ' ]' unless errors.empty?
 
-    else
-      @query_error = 'ERROR(S): [' + errors.join(', ') + ']'
-      false
-    end
+    errors.empty?
   end
 end

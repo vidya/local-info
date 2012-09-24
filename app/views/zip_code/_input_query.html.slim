@@ -1,39 +1,18 @@
 #zip-code-query
+  h4 Total number of neighboring zip codes: #{@zc_count}
+
   - case @query[:query_type]
     - when 'zip_code'
-    table.input-query-table
-      tr
-        td                    zip code:
-        td.td-align-right     #{@query[:zip_code]}
+    - zip_code_data = ['zip code:', 'radius:'].zip ["#{@query[:zip_code]}", "#{@query[:radius]}"]
 
-      tr
-        td                    radius:
-        td.td-align-right     #{@query[:radius]}
+    = render 'location_data', :location_data => zip_code_data
 
   - when 'city_state'
-    table.input-query-table
-      tr
-        td                    city:
-        td.td-align-right     #{@query[:city]}
+    - city_state_data = ['city:', 'state:'].zip ["#{@query[:city]}", "#{@query[:state]}"]
 
-      tr
-        td                    state:
-        td.td-align-right     #{@query[:state]}
-
-      tr
-        td                    radius:
-        td.td-align-right     #{@query[:radius]}
+    = render 'location_data', :location_data => city_state_data
 
   - when 'latitude_longitude'
-    table.input-query-table
-      tr
-        td                    latitude:
-        td.td-align-right     #{@query[:latitude]}
+    - city_state_data = ['latitude:', 'longitude:'].zip ["#{@query[:latitude]}", "#{@query[:longitude]}"]
 
-      tr
-        td                    longitude:
-        td.td-align-right     #{@query[:longitude]}
-
-      tr
-        td                    radius:
-        td.td-align-right     #{@query[:radius]}
+    = render 'location_data', :location_data => city_state_data
