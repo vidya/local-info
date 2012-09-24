@@ -8,7 +8,7 @@ h1 Neighboring zip codes
   .zip-code-div.border-thin-black
     - wiki_title = "#{zc.city}, #{zc.state_code} #{zc.zip}"
     - wiki_entry = "http://en.wikipedia.org/wiki/#{zc.city.gsub(/ /, '_')},_#{zc.state_code.upcase}"
-    = link_to "#{wiki_title}", "#{wiki_entry}"
+    = link_to "#{wiki_title}", "#{wiki_entry}", :target => '_blank'
 
     - lat_long_data = ['latitude: ', 'longitude: '].zip ["#{zc.latitude}", "#{zc.longitude}"]
 
