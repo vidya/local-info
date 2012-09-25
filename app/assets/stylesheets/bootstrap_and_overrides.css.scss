@@ -5,10 +5,21 @@ body {
   background-color: $content-background-color;
 }
 
+#main {
+  background-color: $content-background-color;
+
+  margin: 2px 0px 0px 10px;
+  padding-top: 0px;
+}
+
 .content {
   padding: 0px;
   margin-top: 8px;
   background-color: $content-background-color;
+}
+
+.container {
+  margin: 20px 0px 20px 40px;
 }
 
 @import "bootstrap-responsive";
