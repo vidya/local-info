@@ -23,10 +23,19 @@
   clear: both;
   margin: auto;
   margin-bottom: 5px;
+
+  #result-summary {
+    margin: 10px;
+    font-size: 1.4em;
+  }
 }
 
 .input-query-table {
-  margin-left: 5px;
+  margin: 0px 0px 10px 20px;
+}
+
+.result-location-table {
+  margin: 0px 0px 5px 20px;
 }
 
 #query-table {

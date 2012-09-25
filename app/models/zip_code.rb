@@ -47,7 +47,7 @@ class ZipCode < ActiveRecord::Base
   end
 
   def self.zip_codes_from_lat_long(lat, long, radius)
-    Locality.new(lat, long, radius).find_zip_codes
+    Locality.new(lat, long, radius).find_zip_codes.select { |zc| zc.city.length > 0 }
   end
 
   def self.valid_zip_code?(zip_code)

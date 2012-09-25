@@ -1,5 +1,5 @@
 #zip-code-query
-  h4 Total number of neighboring zip codes: #{@zc_count}
+  p#result-summary Number of zip code neighbors: #{@zc_count}
 
   - case @query[:query_type]
     - when 'zip_code'
