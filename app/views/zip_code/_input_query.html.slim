@@ -3,16 +3,16 @@
 
   - case @query[:query_type]
     - when 'zip_code'
-    - zip_code_data = ['zip code:', 'radius:'].zip ["#{@query[:zip_code]}", "#{@query[:radius]}"]
+    -   zip_code_data = ['zip code:', 'radius:'].zip ["#{@query[:zip_code]}", "#{@query[:radius]}"]
 
-    = render 'location_data', :location_data => zip_code_data
+    =   render 'location_data', :location_data => zip_code_data
 
-  - when 'city_state'
-    - city_state_data = ['city:', 'state:'].zip ["#{@query[:city]}", "#{@query[:state]}"]
+    - when 'city_state'
+    -   city_state_data = ['city:', 'state:'].zip ["#{@query[:city]}", "#{@query[:state]}"]
 
-    = render 'location_data', :location_data => city_state_data
+    =   render 'location_data', :location_data => city_state_data
 
   - when 'latitude_longitude'
-    - city_state_data = ['latitude:', 'longitude:'].zip ["#{@query[:latitude]}", "#{@query[:longitude]}"]
+    -   city_state_data = ['latitude:', 'longitude:'].zip ["#{@query[:latitude]}", "#{@query[:longitude]}"]
 
-    = render 'location_data', :location_data => city_state_data
+    =   render 'location_data', :location_data => city_state_data

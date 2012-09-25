@@ -23,7 +23,7 @@ module ZipCodeHelper
   	def find_zip_codes
   	  west_long, east_long, south_lat, north_lat =  calc_geo_rect
 
-      zc_list = ZipCode.all :conditions => "    longitude > #{west_long} and longitude < #{east_long}
+      zc_list = ZipCode.order("state_code, city, zip").all :conditions => "    longitude > #{west_long} and longitude < #{east_long}
                                             and latitude  > #{south_lat} and latitude  < #{north_lat}"
 
       zc_list.select { |zc| distance(zc.latitude.to_f, zc.longitude.to_f) <= @radius }
