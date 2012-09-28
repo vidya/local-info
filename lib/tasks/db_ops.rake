@@ -1,7 +1,22 @@
-class LoadZipCodes < ActiveRecord::Migration
-  require 'csv'
 
-  def up
+namespace :db_ops do
+  desc 'initialize the database'
+  task :init_db  do
+    sh <<-STR
+      dropdb        local_info_development
+      createdb      local_info_development
+
+      bundle exec   rake db:migrate
+      bundle exec   rake db:seed
+    STR
+  end
+
+  desc "load zip_codes table"
+  task :load_zip_codes => [:environment] do
+    require 'csv'
+
+    puts "start: load_zip_codes"
+
     ZipCode.transaction do
       CSV.foreach "data/zip_codes.csv" do |values|
         values.shift
@@ -18,9 +33,7 @@ class LoadZipCodes < ActiveRecord::Migration
         end
       end
     end
-  end
 
-  def down
-    connection.execute 'delete from zip_codes'
+    puts "end: load_zip_codes"
   end
 end
