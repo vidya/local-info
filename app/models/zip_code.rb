@@ -55,13 +55,10 @@ class ZipCode < ActiveRecord::Base
   end
 
   def self.normalize_name(name)
-    name_segments   = name.split(/ /)
-    new_segments    = name_segments.map { |seg| seg.downcase.capitalize }
-
-    new_segments.join ' '
+    name.upcase
   end
 
   def self.valid_city_and_state?(given_city, given_state)
-    exists?(:city => normalize_name(given_city), :state => normalize_name(given_state))
+    exists?(:city => normalize_name(given_city), :state_code => normalize_name(given_state))
   end
 end

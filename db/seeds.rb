@@ -16,7 +16,6 @@ def setup_users
   user.add_role :admin
 end
 
-#ZIP_CODE_DATA_FILE = 'data/zip_codes.csv'
 ZIP_CODE_DATA_FILE = 'data/http.federalgovernmentzipcodes.us.csv'
 
 def load_zip_codes
@@ -26,18 +25,19 @@ def load_zip_codes
   puts "start: load_zip_codes(): data file: #{ZIP_CODE_DATA_FILE}"
 
   ZipCode.transaction do
-    CSV.foreach ZIP_CODE_DATA_FILE  do |values|
-      values.shift
+    CSV.foreach ZIP_CODE_DATA_FILE, {:headers => true} do |values|
+
+      next unless values['ZipCodeType'].eql? 'STANDARD'
 
       ZipCode.create! do |zc_row|
-        zc_row[:zip]          = values.shift.strip
-        zc_row[:state_code]   = values.shift.strip
+        zc_row[:zip]          = values['Zipcode']
+        zc_row[:state_code]   = values['State']
 
-        zc_row[:latitude]     = values.shift.strip.to_f
-        zc_row[:longitude]    = values.shift.strip.to_f
+        zc_row[:latitude]     = values['Lat'].to_f
+        zc_row[:longitude]    = values['Long'].to_f
 
-        zc_row[:city]         = values.shift.strip
-        zc_row[:state]        = values.shift.strip
+        zc_row[:city]         = values['City']
+        zc_row[:state]        = values['State']
       end
     end
   end
