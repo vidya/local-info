@@ -16,13 +16,17 @@ def setup_users
   user.add_role :admin
 end
 
+#ZIP_CODE_DATA_FILE = 'data/zip_codes.csv'
+ZIP_CODE_DATA_FILE = 'data/http.federalgovernmentzipcodes.us.csv'
+
 def load_zip_codes
   require 'csv'
 
-  puts "start: load_zip_codes"
+  puts
+  puts "start: load_zip_codes(): data file: #{ZIP_CODE_DATA_FILE}"
 
   ZipCode.transaction do
-    CSV.foreach "data/zip_codes.csv" do |values|
+    CSV.foreach ZIP_CODE_DATA_FILE  do |values|
       values.shift
 
       ZipCode.create! do |zc_row|
@@ -38,7 +42,7 @@ def load_zip_codes
     end
   end
 
-  puts "end: load_zip_codes"
+  puts "end: load_zip_codes()"
 end
 
 #--------------- main ---------
