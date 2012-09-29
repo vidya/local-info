@@ -1,4 +1,13 @@
 module ZipCodeHelper
+
+  def display_form(name)
+    name_segments   = name.split(/ /)
+    new_segments    = name_segments.map { |seg| seg.downcase.capitalize }
+
+    #binding.pry
+    new_segments.join ' '
+  end
+
   class Locality
     MILES_PER_ARC_DEGREE  = 69.09
 
