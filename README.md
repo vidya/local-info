@@ -2,12 +2,14 @@ local-info
 ==========
 
 web site:
-    - http://local-info.herokuapp.com/     (email, password) = (user@example.com, please)
+    - http://local-info.herokuapp.com/
 
-This application gives zip codes in a neighborhood of a geographic location in the US. The geographic location can be
-specified as
+      (email, password) = (user@example.com, please)
 
-    - a (city, state) pair
-    - a zip code
-    - a (latitude, longitude) pair
+This application gives zip codes in a neighborhood of a geographic location in the US. The geographic
+location can be specified as
 
+    - city and state
+    - zip code
+    - latitude and longitude
+                            K
