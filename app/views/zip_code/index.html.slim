@@ -27,15 +27,14 @@ h1 Show neighbors
   span
     = label_tag 'State'
 
-    - state_codes   = ['CA', 'NY', 'IA', 'GA', 'NJ', 'NV']
-    - states        = ['California', 'New York', 'Iowa', 'Georgia', 'New Jersey', 'Nevada']
+    ruby:
+      option_list     = State.all
+      first_option    = option_list.shift
 
-    - option_list = state_codes.zip states
-    - first_option = option_list.shift
     select#state_selection
-      option value="#{first_option[0]}" selected="selected" #{first_option[1]}
+      option value="#{first_option.code}" selected="selected" #{first_option.name}
       - option_list.each do |pair|
-        option value="#{pair[0]}" #{pair[1]}
+        option value="#{pair.code}" #{pair.name}
 
   span
     ul.dropdown-menu

@@ -4,7 +4,6 @@ module ZipCodeHelper
     name_segments   = name.split(/ /)
     new_segments    = name_segments.map { |seg| seg.downcase.capitalize }
 
-    #binding.pry
     new_segments.join ' '
   end
 
