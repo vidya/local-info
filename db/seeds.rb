@@ -6,6 +6,8 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+require 'csv'
+
 def setup_users
   puts 'SETTING UP DEFAULT USER LOGIN'
   user = User.create! :name => 'First User', :email => 'user@example.com', :password => 'please', :password_confirmation => 'please'
@@ -16,13 +18,12 @@ def setup_users
   user.add_role :admin
 end
 
-ZIP_CODE_DATA_FILE = 'data/http.federalgovernmentzipcodes.us.csv'
+ZIP_CODE_DATA_FILE    = 'data/http.federalgovernmentzipcodes.us.csv'
+STATES_DATA_FILE      = 'data/states.csv'
 
 def load_zip_codes
-  require 'csv'
-
   puts
-  puts "start: load_zip_codes(): data file: #{ZIP_CODE_DATA_FILE}"
+  puts "loading zip codes from:  #{ZIP_CODE_DATA_FILE}"
 
   ZipCode.transaction do
     CSV.foreach ZIP_CODE_DATA_FILE, {:headers => true} do |values|
@@ -41,85 +42,19 @@ def load_zip_codes
       end
     end
   end
-
-  puts "end: load_zip_codes()"
 end
 
 def load_states
-  [
-    ["Alabama", 				      "AL"],
-    ["Alaska", 				        "AK"],
-    ["Arizona", 				      "AZ"],
+  puts
+  puts "loading states from:  #{STATES_DATA_FILE}"
 
-    ["Arkansas", 				      "AR"],
-    ["California", 				    "CA"],
-    ["Colorado", 				      "CO"],
+  State.transaction do
+    CSV.foreach STATES_DATA_FILE, {:headers => true} do |values|
 
-    ["Connecticut", 			    "CT"],
-    ["Delaware", 				      "DE"],
-    ["District of Columbia", 	"DC"],
-
-    ["Florida", 				      "FL"],
-    ["Georgia", 				      "GA"],
-    ["Hawaii", 				        "HI"],
-
-    ["Idaho", 				        "ID"],
-    ["Illinois", 				      "IL"],
-    ["Indiana", 				      "IN"],
-
-    ["Iowa", 				          "IA"],
-    ["Kansas", 				        "KS"],
-    ["Kentucky", 				      "KY"],
-
-    ["Louisiana", 				    "LA"],
-    ["Maine", 				        "ME"],
-    ["Montana", 				      "MT"],
-
-    ["Nebraska", 				      "NE"],
-    ["Nevada", 				        "NV"],
-    ["New Hampshire", 		    "NH"],
-
-    ["New Jersey", 				    "NJ"],
-    ["New Mexico", 				    "NM"],
-    ["New York", 				      "NY"],
-
-    ["North Carolina", 		    "NC"],
-    ["North Dakota", 	  	    "ND"],
-    ["Ohio", 				          "OH"],
-
-    ["Oklahoma", 				      "OK"],
-    ["Oregon", 				        "OR"],
-    ["Maryland", 				      "MD"],
-
-    ["Massachusetts", 		    "MA"],
-    ["Michigan", 			  	    "MI"],
-    ["Minnesota", 				    "MN"],
-
-    ["Mississippi", 			    "MS"],
-    ["Missouri", 			  	    "MO"],
-    ["Pennsylvania", 			    "PA"],
-
-    ["Rhode Island", 			    "RI"],
-    ["South Carolina", 		    "SC"],
-    ["South Dakota", 			    "SD"],
-
-    ["Tennessee", 				    "TN"],
-    ["Texas", 				        "TX"],
-    ["Utah", 				          "UT"],
-
-    ["Vermont", 				      "VT"],
-    ["Virginia", 				      "VA"],
-    ["Washington", 				    "WA"],
-
-    ["West Virginia", 		    "WV"],
-    ["Wisconsin", 				    "WI"],
-    ["Wyoming", 			  	    "WY"]
-
-  ].each do |name, code|
-
-    State.create! do |st|
-      st.name   = name
-      st.code   = code
+      State.create! do |st|
+        st[:name]          = values['State']
+        st[:code]          = values['Abbreviation']
+      end
     end
   end
 end
@@ -127,6 +62,6 @@ end
 #--------------- main ---------
 setup_users
 
-load_zip_codes
-
 load_states
+
+load_zip_codes

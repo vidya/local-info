@@ -28,21 +28,14 @@ h1 Show neighbors
     = label_tag 'State'
 
     ruby:
-      option_list     = State.all
-      first_option    = option_list.shift
+      state_list     = State.all
 
     select#state_selection
-      option value="#{first_option.code}" selected="selected" #{first_option.name}
-      - option_list.each do |pair|
-        option value="#{pair.code}" #{pair.name}
-
-  span
-    ul.dropdown-menu
-      li <a href="#">PHP</a></li>
-      li <a href="#">Ruby</a></li>
-      li <a href="#">Perl</a></li>
-      li <a href="#">Pytho </a></li>
-
+      - state_list.each do |st|
+        - if st.code.eql? 'CA'
+          option value="#{st.code}" selected="selected" #{st.name}
+        - else
+          option value="#{st.code}" #{st.name}
 
 #lat-long-div
   span
