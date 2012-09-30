@@ -40,9 +40,7 @@ $ ->
 
         when 'city_state'
           query_string += '&city=' + $('#city').val()
-#          query_string += '&state=' + $('#state').val()
-          state = $('select#state_selection option:selected').val()
-          query_string += '&state=' + state
+          query_string += '&state=' + $('select#state_selection option:selected').val()
 
         when 'latitude_longitude'
           query_string += '&latitude=' + $('#latitude').val()
@@ -52,11 +50,6 @@ $ ->
           alert 'unepected query-type: ' + this.value
 
     query_string += '&radius=' + $('#radius').val()
-
-  $('#state_selection').change ->
-    state_val = $('select#state_selection option:selected').val()
-    console.log 'state_val = ' + state_val
-    alert 'state selection changed'
 
   $('.query-type').click ->
     display_query_fields()
