@@ -3,7 +3,6 @@
 
   - case @query[:query_type]
     - when 'zip_code'
-    -   location_data = ['zip code:', 'radius:'].zip ["#{@query[:zip_code]}", "#{@query[:radius]}"]
     .location-value-label-div
       .location-label-div
         = 'Zipcode:'
@@ -16,7 +15,6 @@
         = "#{@query[:radius]}"
 
     - when 'city_state'
-    -   location_data = ['city:', 'state:', 'radius:'].zip ["#{@query[:city]}", "#{@query[:state]}", "#{@query[:radius]}"]
     .location-value-label-div
       .location-label-div
         = 'City:'
@@ -32,9 +30,7 @@
         br
         = "#{@query[:radius]}"
 
-
     - when 'latitude_longitude'
-    -   location_data = ['latitude:', 'longitude:', 'radius:'].zip ["#{@query[:latitude]}", "#{@query[:longitude]}", "#{@query[:radius]}"]
     .location-value-label-div
       .location-label-div
         = 'Latitude:'
