@@ -15,10 +15,8 @@
         br
         = "#{@query[:radius]}"
 
-
     - when 'city_state'
     -   location_data = ['city:', 'state:', 'radius:'].zip ["#{@query[:city]}", "#{@query[:state]}", "#{@query[:radius]}"]
-    /.location-div
     .location-value-label-div
       .location-label-div
         = 'City:'
@@ -51,32 +49,3 @@
         = "#{@query[:longitude]}"
         br
         = "#{@query[:radius]}"
-
-  /= render 'location_data', :location_data => location_data
-
-  /ruby:
-  /  case @query[:query_type]
-  /    when 'zip_code'
-  /      location_data = ['zip code:', 'radius:'].zip ["#{@query[:zip_code]}", "#{@query[:radius]}"]
-  /
-  /    when 'city_state'
-  /      #location_data = ['city:', 'state:', 'radius:'].zip ["#{@query[:city]}", "#{@query[:state]}", "#{@query[:radius]}"]
-  /
-  /    when 'latitude_longitude'
-  /      location_data = ['latitude:', 'longitude:', 'radius:'].zip ["#{@query[:latitude]}", "#{@query[:longitude]}", "#{@query[:radius]}"]
-
-  /.location-div
-  /  /.wiki-link-div
-  /    = link_to "#{wiki[0]}", "#{wiki[1]}", :target => '_blank', :class => 'wiki_link'
-  /
-  /  br
-  /  .location-value-label-div
-  /    .location-label-div
-  /      = location_data[0][0]
-  /      br
-  /      = location_data[1][0]
-  /
-  /    .location-value-div
-  /      = location_data[0][1]
-  /      br
-  /      = location_data[1][1]

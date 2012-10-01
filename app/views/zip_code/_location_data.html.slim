@@ -1,21 +1,16 @@
 
-/hr.clearfix.hr-line-black-dotted
-- wiki = location_data.shift
-/= link_to "#{wiki[0]}", "#{wiki[1]}", :target => '_blank', :class => 'wiki_link'
+p.clearfix
+  hr
 
-/- location_data.each do |row|
-  ul.list-style-none
-    li                 #{row[0]}
-    li   #{row[1]}
-                                               .c
-/hr.clearfix
+- wiki = location_data.shift
 .location-div
   .wiki-link-div
     = link_to "#{wiki[0]}", "#{wiki[1]}", :target => '_blank', :class => 'wiki_link'
 
-  br
+  p.clearfix
+
   .location-value-label-div
-    .location-label-div
+    .location-label-div.clearfix
       = location_data[0][0]
       br
       = location_data[1][0]
@@ -25,5 +20,3 @@
       br
       = location_data[1][1]
 
-p.clearfix
-  hr
