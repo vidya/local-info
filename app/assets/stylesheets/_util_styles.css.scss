@@ -1,5 +1,5 @@
 
-$content-background-color: #e0ffff;
+$content-background-color: white;
 
 @mixin border-style-util($color, $width: 1px) {
   border: $width solid $color;
@@ -16,6 +16,10 @@ $content-background-color: #e0ffff;
 .td-align-right {
   padding-left: 10px;
   text-align: right;
+}
+
+.list-style-none {
+  list-style: none;
 }
 
 .float-left-div {

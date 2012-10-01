@@ -1,6 +1,29 @@
 
-table.result-location-table
-  - location_data.each do |row|
-    tr
-      td                  #{row[0]}
-      td.td-align-right   #{row[1]}
+/hr.clearfix.hr-line-black-dotted
+- wiki = location_data.shift
+/= link_to "#{wiki[0]}", "#{wiki[1]}", :target => '_blank', :class => 'wiki_link'
+
+/- location_data.each do |row|
+  ul.list-style-none
+    li                 #{row[0]}
+    li   #{row[1]}
+                                               .c
+/hr.clearfix
+.location-div
+  .wiki-link-div
+    = link_to "#{wiki[0]}", "#{wiki[1]}", :target => '_blank', :class => 'wiki_link'
+
+  br
+  .location-value-label-div
+    .location-label-div
+      = location_data[0][0]
+      br
+      = location_data[1][0]
+
+    .location-value-div
+      = location_data[0][1]
+      br
+      = location_data[1][1]
+
+p.clearfix
+  hr

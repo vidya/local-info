@@ -19,6 +19,43 @@
   margin-right: 10px;
 }
 
+.wiki_link {
+  //@include border-style-util(lightgreen, 2px);
+  //padding: 4px;
+  padding-left: 0px;
+  //margin-bottom: 4px;
+}
+
+.location-div {
+ clear: both;
+ float: left;
+ margin: 2px;
+ //width: 200px;
+ //border: 2px solid green;
+}
+
+.location-label-div {
+  clear: both;
+  float: left;
+}
+
+.wiki-link-div {
+  float: left;
+  margin-bottom: 10px;
+}
+
+.location-value-label-div {
+  width: 160px;
+  //margin-bottom:10px;
+}
+
+.location-value-div {
+  //.clear: both;
+  //margin-top: 10px;
+  .float: left;
+  text-align: right;
+}
+
 #zip-code-query {
   background: #d3d3d3;
   color: blue;
