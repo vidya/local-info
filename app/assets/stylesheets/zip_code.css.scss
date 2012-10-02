@@ -20,43 +20,6 @@
   margin-right: 10px;
 }
 
-// --- location ----------------------------------------
-.location-info-links {
-  float: left;
-  margin-left: 20px;
-}
-
-.location-div {
-  clear: both;
-  float: left;
-  margin: 2px;
-
-  @include round-corner-box;
-}
-
-.location-label-div {
-  clear: both;
-  float: left;
-  margin-left: 10px;
-}
-
-.wiki-link-div {
-  padding: 10px;
-  padding-bottom: 0px;
-  float: left;
-}
-
-.location-value-label-div {
-  width: 160px;
-  padding: 10px;
-  padding-top: 0px;
-}
-
-.location-value-div {
-  .float: left;
-  text-align: right;
-}
-
 #zip-code-query {
   background: #d3d3d3;
   color: blue;
@@ -101,6 +64,50 @@
   }
 }
 
+// --- location ----------------------------------------
+.location-info-links {
+  float: left;
+  margin-left: 20px;
+  margin-top: 5px;
+
+  @include round-corner-box;
+}
+
+.map_link {
+  padding: 5px;
+}
+.location-div {
+  clear: both;
+  float: left;
+  margin: 2px;
+
+  @include round-corner-box;
+}
+
+.location-label-div {
+  clear: both;
+  float: left;
+  margin-left: 10px;
+}
+
+.wiki-link-div {
+  padding: 10px;
+  padding-bottom: 0px;
+  float: left;
+}
+
+.location-value-label-div {
+  width: 160px;
+  padding: 10px;
+  padding-top: 0px;
+}
+
+.location-value-div {
+  .float: left;
+  text-align: right;
+}
+
+// --- miscellaneous ----------------------------------------
 .btn-zip-code {
     background: #90ee90;
 }
