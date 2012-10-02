@@ -9,6 +9,13 @@ $content-background-color: white;
   border-width: 0px;
 }
 
+@mixin round-corner-box {
+  border: 1px solid #cecece;
+  border-radius: 0.3em;
+  //-moz-border-radius: 0.3em;
+  -webkit-border-radius: 0.3em;
+}
+
 .border-thin-black {
   @include border-style-util(black);
 }

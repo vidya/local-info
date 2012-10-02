@@ -35,6 +35,7 @@
   font-size: 1.4em;
   font-color: #8888ff;
   @include border-style-util(blue, 2px);
+  @include round-corner-box;
 }
 
 #top-menu-local-info .disabled-link {

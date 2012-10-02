@@ -36,3 +36,6 @@ group :test, :development do
   gem 'minitest-rails'
   gem 'minitest-spec-rails'
 end
+
+gem 'geocoder'
+gem 'gmaps4rails'

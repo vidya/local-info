@@ -2,21 +2,31 @@
 p.clearfix
   hr
 
-- wiki = location_data.shift
+ruby:
+  wiki_title, wiki_link     = location_data.shift
+  lat_label,  lat_value     = location_data.shift
+  long_label, long_value    = location_data.shift
+
+  map_link  = 'http://maps.googleapis.com/maps/api/staticmap?'
+  map_link += "center=#{lat_value},#{long_value}"
+  map_link += '&zoom=12&size=400x400&sensor=false'
+
 .location-div
   .wiki-link-div
-    = link_to "#{wiki[0]}", "#{wiki[1]}", :target => '_blank', :class => 'wiki_link'
+    = link_to "#{wiki_title}", "#{wiki_link}", :target => '_blank', :class => 'wiki_link'
 
   p.clearfix
 
   .location-value-label-div
     .location-label-div.clearfix
-      = location_data[0][0]
+      = lat_label
       br
-      = location_data[1][0]
+      = long_label
 
     .location-value-div
-      = location_data[0][1]
+      = lat_value
       br
-      = location_data[1][1]
+      = long_value
 
+.location-info-links.clearfix
+  = link_to 'Map', "#{map_link}", :target => '_blank', :class => 'map_link'
