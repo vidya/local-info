@@ -1,7 +1,4 @@
 
-/p.clearfix
-/  hr
-
 ruby:
   map_link  = 'http://maps.googleapis.com/maps/api/staticmap?'
   map_link += "center=#{params[:latitude]},#{params[:longitude]}"
@@ -21,13 +18,8 @@ ruby:
       br
       = params[:longitude]
 
-  /p.clearfix
-
   .wiki-link-div.clearfix
-    /br
     = link_to "Wikipedia", "#{params[:wiki_entry]}", :target => '_blank', :class => 'info-link'
 
-    /.location-info-links.clearfix
-    /br
     = link_to 'Map', "#{map_link}", :target => '_blank', :class => 'info-link'
 
