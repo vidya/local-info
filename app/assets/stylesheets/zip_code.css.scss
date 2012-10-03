@@ -9,12 +9,6 @@
   padding: 4px;
 }
 
-.zip-code-area {
-  padding-left: 20px;
-  background: #ccddee;
-  color: blue;
-}
-
 // --- query ----------------------------------------
 #city-state-div #city, #lat-long-div #latitude {
   margin-right: 10px;
@@ -27,22 +21,18 @@
   @include round-corner-box;
 
   clear: both;
-  margin: auto;
+  float: left;
+
+  //margin: auto;
   margin-bottom: 5px;
   padding-bottom: 10px;
+
+  width:80%;
 
   #result-summary {
     margin: 10px;
     font-size: 1.4em;
   }
-}
-
-.input-query-table {
-  margin: 0px 0px 10px 20px;
-}
-
-.result-location-table {
-  margin: 0px 0px 5px 20px;
 }
 
 #query-table {
@@ -65,21 +55,38 @@
 }
 
 // --- location ----------------------------------------
+.city-name-div {
+  padding: 10px 10px 5px;
+  color: orange;
+  //margin: 5px;
+}
+
 .location-info-links {
   float: left;
-  margin-left: 20px;
+  //margin-left: 20px;
   margin-top: 5px;
-
-  @include round-corner-box;
+  margin-bottom: 5px;
+  //@include round-corner-box;
 }
 
-.map_link {
-  padding: 5px;
+.info-link {
+  margin: 5px;
 }
+
+.first-info-link {
+  margin-left: 0px;
+}
+
+//.map_link {
+//  padding: 5px;
+//}
+
 .location-div {
-  clear: both;
-  float: left;
-  margin: 2px;
+  //clear: both;
+  //float: left;
+  //margin: 2px;
+  margin-top: 8px;
+  width: 80%;
 
   @include round-corner-box;
 }
@@ -87,19 +94,23 @@
 .location-label-div {
   clear: both;
   float: left;
-  margin-left: 10px;
+  margin-left: 5px;
 }
 
 .wiki-link-div {
-  padding: 10px;
-  padding-bottom: 0px;
+  padding: 10px 10px 5px;
+  //padding-bottom: 0px;
   float: left;
 }
 
 .location-value-label-div {
-  width: 160px;
-  padding: 10px;
-  padding-top: 0px;
+  width: 140px;
+  //padding-top: 0px;
+  margin:5px;
+  margin-left: 25px;
+  padding: 5px;
+
+  @include border-style-util(green);
 }
 
 .location-value-div {

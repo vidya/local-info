@@ -7,12 +7,16 @@ p.clearfix
 
 - @zc_list.each do |zc|
   ruby:
-    wiki_title = "#{display_form zc.city}, #{zc.state_code} #{zc.zip}"
-    wiki_entry = "http://en.wikipedia.org/wiki/#{display_form(zc.city).gsub(/ /, '_')},_#{zc.state_code.upcase}"
+    params = {
+      :wiki_title   => "#{display_form zc.city}, #{zc.state_code} #{zc.zip}",
+      :wiki_entry   => "http://en.wikipedia.org/wiki/" +
+                          "#{display_form(zc.city).gsub(/ /, '_')},_#{zc.state_code.upcase}",
 
-    location_data = ["#{wiki_title}", 'latitude: ', 'longitude: '].zip ["#{wiki_entry}", "#{zc.latitude}", "#{zc.longitude}"]
+      :latitude     => "#{zc.latitude}",
+      :longitude    => "#{zc.longitude}"
+    }
 
-  = render 'location_data', :location_data => location_data
+  = render 'location_data', :params => params
 
 p.clearfix
   = paginate @zc_list
