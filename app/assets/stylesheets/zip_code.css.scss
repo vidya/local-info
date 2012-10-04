@@ -17,7 +17,6 @@
   margin-right: 10px;
 }
 
-
 // query-table of index page
 #query-table {
   @include no-border;
@@ -49,7 +48,6 @@
   float: left;
 
   margin-bottom: 5px;
-  //padding-bottom: 10px;
 
   width:80%;
 
@@ -63,13 +61,12 @@
     margin:5px;
     margin-left: 10px;
     padding: 0px 5px 5px 5px;
-
-    //@include border-style-util(green);
   }
 }
 
-
 // --- location ----------------------------------------
+// TODO: rename location to 'neighbor'
+
 .city-name-div {
   padding: 10px 10px 5px;
   color: magenta;
@@ -114,8 +111,6 @@
   margin-left: 10px;
   border: 1px dotted;
   padding: 0px 5px 5px 5px;
-
-  //@include border-style-util(green);
 }
 
 .location-value-div {

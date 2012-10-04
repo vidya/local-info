@@ -1,4 +1,6 @@
 
+// TODO: rename - use type-of-query, zip-code-query, radius-of-query etc.
+
 #query_method
   h1 Show neighbors
 
@@ -45,12 +47,10 @@
       :id => 'longitude', :class => "query-params", :placeholder => 'longitude',
       :rel => 'tooltip', :title=>'for example -122'
 
-/ TODO: add 'miles' label for radius
 #query-div
   span
     = label_tag 'radius in miles'
     span
       = number_field_tag 'radius', 25, :in => 1...100
-      /= label_tag 'miles'
 
   br = link_to 'Show neighbors', '/zip_code/nearby_zip_codes', :id => 'show-zip-codes', :class => 'btn-zip-code btn btn-small'
