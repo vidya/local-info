@@ -1,6 +1,7 @@
-h1 Show neighbors
 
 #query_method
+  h1 Show neighbors
+
   table.table.table-condensed.table-bordered#query-table
     tr.query-row
       td.td-compact  = radio_button_tag 'query_method', "city_state", true, :class => "query-type"
@@ -44,6 +45,7 @@ h1 Show neighbors
       :id => 'longitude', :class => "query-params", :placeholder => 'longitude',
       :rel => 'tooltip', :title=>'for example -122'
 
+/ TODO: add 'miles' label for radius
 #query-div
   span
     = label_tag 'radius'
