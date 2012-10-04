@@ -1,45 +1,61 @@
-#zip-code-query
-  #result-summary Number of zip code neighbors: #{@zc_count}
+#input-query-container
 
-  - case @query[:query_type]
-    - when 'zip_code'
-    .location-value-label-div
+  .input-query-div
+    /#result-summary Number of zip code neighbors: #{@zc_count}
+    - case @query[:query_type]
+      - when 'zip_code'
       .location-label-div
+        = 'Number of zip codes:'
+        br
+        br
         = 'Zipcode:'
         br
-        = 'Radius:'
+        = 'Radius in miles:'
 
       .location-value-div
+        = "#{@zc_count}"
+        br
+        br
         = "#{@query[:zip_code]}"
         br
         = "#{@query[:radius]}"
 
-    - when 'city_state'
-    .location-value-label-div
+      - when 'city_state'
       .location-label-div
+        = 'Number of zip codes:'
+        br
+        br
         = 'City:'
         br
         = 'State:'
         br
-        = 'Radius:'
+        = 'Radius in miles:'
 
       .location-value-div
+        = "#{@zc_count}"
+        br
+        br
         = "#{@query[:city]}"
         br
         = "#{@query[:state]}"
         br
         = "#{@query[:radius]}"
 
-    - when 'latitude_longitude'
-    .location-value-label-div
+      - when 'latitude_longitude'
       .location-label-div
+        = 'Number of zip codes:'
+        br
+        br
         = 'Latitude:'
         br
         = 'Longitude:'
         br
-        = 'Radius:'
+        = 'Radius in miles:'
 
       .location-value-div
+        = "#{@zc_count}"
+        br
+        br
         = "#{@query[:latitude]}"
         br
         = "#{@query[:longitude]}"

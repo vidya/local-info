@@ -17,25 +17,6 @@
   margin-right: 10px;
 }
 
-#zip-code-query {
-  background: #fffff0;
-  color: orange;
-  @include border-style-util(green);
-  @include round-corner-box;
-
-  clear: both;
-  float: left;
-
-  margin-bottom: 5px;
-  padding-bottom: 10px;
-
-  width:80%;
-
-  #result-summary {
-    margin: 10px;
-    font-size: 1.4em;
-  }
-}
 
 // query-table of index page
 #query-table {
@@ -57,10 +38,41 @@
   }
 }
 
+// --- input query
+#input-query-container {
+  background: #fffff0;
+  color: maroon;
+  @include border-style-util(green);
+  @include round-corner-box;
+
+  clear: both;
+  float: left;
+
+  margin-bottom: 5px;
+  //padding-bottom: 10px;
+
+  width:80%;
+
+  #result-summary {
+    margin: 10px;
+    font-size: 1.4em;
+  }
+
+  .input-query-div {
+    width: 220px;
+    margin:5px;
+    margin-left: 10px;
+    padding: 0px 5px 5px 5px;
+
+    //@include border-style-util(green);
+  }
+}
+
+
 // --- location ----------------------------------------
 .city-name-div {
   padding: 10px 10px 5px;
-  color: orange;
+  color: magenta;
 }
 
 .location-info-links {
@@ -100,9 +112,10 @@
   width: 140px;
   margin:5px;
   margin-left: 10px;
+  border: 1px dotted;
   padding: 0px 5px 5px 5px;
 
-  @include border-style-util(green);
+  //@include border-style-util(green);
 }
 
 .location-value-div {

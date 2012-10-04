@@ -48,7 +48,9 @@
 / TODO: add 'miles' label for radius
 #query-div
   span
-    = label_tag 'radius'
-    = number_field_tag 'radius', 25, :in => 1...100
+    = label_tag 'radius in miles'
+    span
+      = number_field_tag 'radius', 25, :in => 1...100
+      /= label_tag 'miles'
 
   br = link_to 'Show neighbors', '/zip_code/nearby_zip_codes', :id => 'show-zip-codes', :class => 'btn-zip-code btn btn-small'
