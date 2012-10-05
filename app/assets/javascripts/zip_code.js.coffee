@@ -3,27 +3,27 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 $ ->
-  $('.zip-code-div').css       "color",        "black"
-  $('.zip-code-div:even').css  "background",   "#c0d0b0"
-  $('.zip-code-div:odd').css  "background",   "lightgoldenrodyellow"
+  $('.zip-code-query').css       "color",        "black"
+  $('.zip-code-query:even').css  "background",   "#c0d0b0"
+  $('.zip-code-query:odd').css  "background",   "lightgoldenrodyellow"
 
   display_query_fields = ->
     $('.query-type:checked').each ->
       switch this.value
         when 'zip_code'
-          $('#city-state-div').hide()
-          $('#lat-long-div').hide()
-          $('#zip-code-div').show()
+          $('#city-state-query').hide()
+          $('#lat-long-query').hide()
+          $('#zip-code-query').show()
 
         when 'city_state'
-          $('#zip-code-div').hide()
-          $('#lat-long-div').hide()
-          $('#city-state-div').show()
+          $('#zip-code-query').hide()
+          $('#lat-long-query').hide()
+          $('#city-state-query').show()
 
         when 'latitude_longitude'
-          $('#zip-code-div').hide()
-          $('#city-state-div').hide()
-          $('#lat-long-div').show()
+          $('#zip-code-query').hide()
+          $('#city-state-query').hide()
+          $('#lat-long-query').show()
 
         else
           alert 'unepected query-type: ' + this.value

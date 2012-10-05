@@ -4,8 +4,10 @@ ruby:
   map_link += "center=#{params[:latitude]},#{params[:longitude]}"
   map_link += '&zoom=12&size=400x400&sensor=false'
 
-.location-div.clearfix
-  .city-name-div= "#{params[:wiki_title]}"
+/.location-div.clearfix
+.neighbor-div.clearfix
+  /.city-name-div= "#{params[:wiki_title]}"
+  .neighbor-city-name= "#{params[:wiki_title]}"
 
   .location-value-label-div
     .location-label-div.clearfix
@@ -18,8 +20,10 @@ ruby:
       br
       = params[:longitude]
 
-  .wiki-link-div.clearfix
-    = link_to "Wikipedia", "#{params[:wiki_entry]}", :target => '_blank', :class => 'info-link'
+  .neighbor-info-link.clearfix
+    = link_to "Wikipedia", "#{params[:wiki_entry]}", :target => '_blank'
+    /, :class => 'info-link'
 
-    = link_to 'Map', "#{map_link}", :target => '_blank', :class => 'info-link'
+    = link_to 'Map', "#{map_link}", :target => '_blank'
+    /, :class => 'info-link'
 

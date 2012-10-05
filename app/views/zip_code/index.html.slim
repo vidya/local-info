@@ -1,7 +1,7 @@
 
 // TODO: rename - use type-of-query, zip-code-query, radius-of-query etc.
 
-#query_method
+#type-of-query
   h1 Show neighbors
 
   table.table.table-condensed.table-bordered#query-table
@@ -17,11 +17,11 @@
       td.td-compact = radio_button_tag 'query_method', "latitude_longitude", false, :class => "query-type"
       td.td-centered = label_tag 'latitude, longitude'
 
-#zip-code-div
+#zip-code-query
   span
     = text_field_tag 'zip_code', '', :maxlength => 8, :size => 8, :id => 'zip-code', :class => "query-params", :placeholder => 'zip code'
 
-#city-state-div
+#city-state-query
   span
     = text_field_tag 'city', '', :maxlength => 20, :size => 20, :id => 'city', :class => "query-params", :placeholder => 'City'
 
@@ -36,7 +36,7 @@
         - else
           option value="#{st.code}" #{st.name}
 
-#lat-long-div
+#lat-long-query
   span
     = text_field_tag '', '', :maxlength => 4, :size => 4,
       :id => 'latitude', :class => "query-params", :placeholder => 'latitude',

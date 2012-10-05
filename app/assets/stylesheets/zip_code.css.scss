@@ -7,17 +7,18 @@
 //
 // TODO: organize the styles
 //
-.zip-code-div {
+
+// --- index page ------------------------------------
+// --- query
+.zip-code-query {
   margin-bottom: 1px;
   padding: 4px;
 }
 
-// --- query ----------------------------------------
-#city-state-div #city, #lat-long-div #latitude {
+#city-state-query #city, #lat-long-query #latitude {
   margin-right: 10px;
 }
 
-// query-table of index page
 #query-table {
   @include no-border;
 
@@ -37,6 +38,7 @@
   }
 }
 
+// --- neighbors page ------------------------------------
 // --- input query
 #input-query-container {
   background: #fffff0;
@@ -67,26 +69,29 @@
 // --- location ----------------------------------------
 // TODO: rename location to 'neighbor'
 
-.city-name-div {
+//.city-name-div {
+.neighbor-city-name {
   padding: 10px 10px 5px;
   color: magenta;
+  font-size: 1.2em;
 }
 
-.location-info-links {
-  float: left;
-  margin-top: 5px;
-  margin-bottom: 5px;
-}
+//.location-info-links {
+//  float: left;
+//  margin-top: 5px;
+//  margin-bottom: 5px;
+//}
 
-.info-link {
-  margin: 5px;
-}
+//.info-link {
+//  margin: 5px;
+//}
 
-.first-info-link {
-  margin-left: 0px;
-}
+//.first-info-link {
+//  margin-left: 0px;
+//}
 
-.location-div {
+//.location-div {
+.neighbor-div {
   margin-top: 8px;
   width: 80%;
 
@@ -99,14 +104,18 @@
   margin-left: 5px;
 }
 
-.wiki-link-div {
-  padding: 0px 10px 5px;
+.neighbor-info-link {
   float: left;
+
   margin-left: -5px;
+  padding: 0px 10px 5px;
+
+  a { margin: 5px; }
 }
 
 .location-value-label-div {
   width: 140px;
+
   margin:5px;
   margin-left: 10px;
   border: 1px dotted;
@@ -119,6 +128,4 @@
 }
 
 // --- miscellaneous ----------------------------------------
-.btn-zip-code {
-    background: #90ee90;
-}
+.btn-zip-code { background: #90ee90; }
