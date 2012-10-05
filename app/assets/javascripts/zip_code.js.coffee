@@ -3,9 +3,9 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 $ ->
-  $('.zip-code-query').css       "color",        "black"
-  $('.zip-code-query:even').css  "background",   "#c0d0b0"
-  $('.zip-code-query:odd').css  "background",   "lightgoldenrodyellow"
+  $('.zip-code-query').css          "color",        "black"
+  $('.zip-code-query:even').css     "background",   "#c0d0b0"
+  $('.zip-code-query:odd').css      "background",   "lightgoldenrodyellow"
 
   display_query_fields = ->
     $('.query-type:checked').each ->

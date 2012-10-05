@@ -32,34 +32,37 @@
 
     @include no-border;
 
-    label {
-      padding-top: 2px;
-    }
+    label { padding-top: 2px; }
   }
 }
 
 // --- neighbors page ------------------------------------
 // --- input query
 #input-query-container {
-  background: #fffff0;
-  color: maroon;
-  @include border-style-util(green);
   @include round-corner-box;
+
+  width:80%;
 
   clear: both;
   float: left;
 
+  background: #fffff0;
+
+  @include border-style-util(green);
+
   margin-bottom: 5px;
 
-  width:80%;
+  color: maroon;
 
   #result-summary {
     margin: 10px;
+
     font-size: 1.4em;
   }
 
   .input-query-div {
     width: 220px;
+
     margin:5px;
     margin-left: 10px;
     padding: 0px 5px 5px 5px;
@@ -69,28 +72,12 @@
 // --- location ----------------------------------------
 // TODO: rename location to 'neighbor'
 
-//.city-name-div {
 .neighbor-city-name {
   padding: 10px 10px 5px;
   color: magenta;
   font-size: 1.2em;
 }
 
-//.location-info-links {
-//  float: left;
-//  margin-top: 5px;
-//  margin-bottom: 5px;
-//}
-
-//.info-link {
-//  margin: 5px;
-//}
-
-//.first-info-link {
-//  margin-left: 0px;
-//}
-
-//.location-div {
 .neighbor-div {
   margin-top: 8px;
   width: 80%;
@@ -101,6 +88,7 @@
 .location-label-div {
   clear: both;
   float: left;
+
   margin-left: 5px;
 }
 
