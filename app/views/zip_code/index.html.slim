@@ -18,10 +18,12 @@
       td.td-centered = label_tag 'latitude, longitude'
 
 #zip-code-query
-  = text_field_tag 'zip_code', '', :maxlength => 8, :size => 8, :id => 'zip-code', :class => "query-params", :placeholder => 'zip code'
+  = text_field_tag 'zip_code', '', :maxlength => 8, :size => 8,
+    :id => 'zip-code', :class => "query-params", :placeholder => 'zip code'
 
 #city-state-query
-  = text_field_tag 'city', '', :maxlength => 20, :size => 20, :id => 'city', :class => "query-params", :placeholder => 'City'
+  = text_field_tag 'city', '', :maxlength => 20, :size => 20,
+    :id => 'city', :class => "query-params", :placeholder => 'City'
 
   ruby:
     state_list     = State.all
@@ -43,8 +45,9 @@
     :rel => 'tooltip', :title=>'for example -122'
 
 #query-div
-  span
-    = label_tag 'radius(miles)'
-    = number_field_tag 'radius', 25, :in => 1...100
+  = label_tag 'radius(miles)'
+  = number_field_tag 'radius', 25, :in => 1...100
 
-  br= link_to 'Show neighbors', '/zip_code/nearby_zip_codes', :id => 'show-zip-codes', :class => 'btn-zip-code btn btn-small'
+  br
+  = link_to 'Show neighbors', '/zip_code/nearby_zip_codes',
+    :id => 'show-zip-codes', :class => 'btn-zip-code btn btn-small'
