@@ -54,6 +54,14 @@ $ ->
   $('.query-type').click ->
     display_query_fields()
 
+  add_highlighting = ->
+    $(@).addClass "active-area"
+
+  delete_highlighting = ->
+    $(@).removeClass "active-area"
+
+  $('.neighbor-div').hover add_highlighting, delete_highlighting
+
   $('#show-zip-codes').click ->
     this.href += get_query_string()
     console.log 'href = ' + this.href
