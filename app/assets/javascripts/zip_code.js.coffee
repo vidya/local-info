@@ -3,13 +3,11 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 $ ->
-  $('.zip-code-query').css          "color",        "black"
-  $('.zip-code-query:even').css     "background",   "#c0d0b0"
-  $('.zip-code-query:odd').css      "background",   "lightgoldenrodyellow"
-
   display_query_fields = ->
-    $('.query-type:checked').each ->
-      switch this.value
+#    $('.query-type:checked').each ->
+    $('.query-radio-btn:checked').each ->
+#      alert 'query-radio-btn: ' + @.value
+      switch @.value
         when 'zip_code'
           $('#city-state-query').hide()
           $('#lat-long-query').hide()
@@ -26,45 +24,47 @@ $ ->
           $('#lat-long-query').show()
 
         else
-          alert 'unepected query-type: ' + this.value
+          alert 'display_query_fields: unepected query-type: ' + @.value
 
   get_query_string = ->
     query_string = '?'
 
-    $('.query-type:checked').each ->
-      query_string += 'query_type=' + this.value
+#    $('.query-type:checked').each ->
+    $('.query-radio-btn:checked').each ->
+      query_string        += 'query_type=' + (@).value
+#      query_string        += 'query-radio-btn=' + @.value
 
-      switch this.value
+      switch @.value
         when 'zip_code'
-          query_string += '&zip_code=' + $('#zip-code').val()
+          query_string    += '&zip_code=' + $('#zip-code').val()
+#          query_string    += '&zip_code=' + $(@).val
 
         when 'city_state'
-          query_string += '&city=' + $('#city').val()
-          query_string += '&state=' + $('select#state_selection option:selected').val()
+          query_string    += '&city=' + $('#city').val() +
+                             '&state=' + $('select#state_selection option:selected').val()
 
         when 'latitude_longitude'
-          query_string += '&latitude=' + $('#latitude').val()
-          query_string += '&longitude=' + $('#longitude').val()
+          query_string    += '&latitude=' + $('#latitude').val() +
+                             '&longitude=' + $('#longitude').val()
 
         else
-          alert 'unepected query-type: ' + this.value
+          alert 'get_query_string: unepected query-type: ' + @.value
 
-    query_string += '&radius=' + $('#radius').val()
+    query_string          += '&radius=' + $('#radius').val()
 
-  $('.query-type').click ->
-    display_query_fields()
+#  $('.query-type').click -> display_query_fields()
+  $('.query-radio-btn').click -> display_query_fields()
 
-  add_highlighting = ->
-    $(@).addClass "active-area"
-
-  delete_highlighting = ->
-    $(@).removeClass "active-area"
+  # --- neighbor: highlight on hover
+  add_highlighting        = -> $(@).addClass "active-area"
+  delete_highlighting     = -> $(@).removeClass "active-area"
 
   $('.neighbor-div').hover add_highlighting, delete_highlighting
 
+  # ---
   $('#show-zip-codes').click ->
-    this.href += get_query_string()
-    console.log 'href = ' + this.href
+    @.href += get_query_string()
+    console.log 'href = ' + @.href
 
   # ------------- main ---------
   display_query_fields()

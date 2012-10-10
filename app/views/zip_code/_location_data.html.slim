@@ -1,8 +1,8 @@
 
 ruby:
-  map_link  = 'http://maps.googleapis.com/maps/api/staticmap?'
-  map_link += "center=#{params[:latitude]},#{params[:longitude]}"
-  map_link += '&zoom=12&size=400x400&sensor=false'
+  map_link  = 'http://maps.googleapis.com/maps/api/staticmap?'      +
+              "center=#{params[:latitude]},#{params[:longitude]}"   +
+              '&zoom=12&size=400x400&sensor=false'
 
 .neighbor-div.clearfix
   .neighbor-city-name= "#{params[:wiki_title]}"
