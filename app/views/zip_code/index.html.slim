@@ -12,32 +12,12 @@
   #query-choice-list
     p.query-choice-label
       = label_tag 'city, state'
-      /, :class => "query-choice-label"
     p.query-choice-label
       = label_tag 'zip code'
-      /, :class => "query-choice-label"
     p.query-choice-label
       = label_tag 'latitude, longitude'
-      /, :class => "query-choice-label"
 
 p.clearfix
-
-#type-of-query
-  /h1 Show neighbors
-
-  /table.table.table-condensed.table-bordered#query-table
-  /  tr
-  /    td.td-compact  = radio_button_tag 'query_method', "city_state", true, :class => "query-type"
-  /    td.td-centered = label_tag 'city, state'
-  /
-  /  tr
-  /    td.td-compact = radio_button_tag 'query_method', "zip_code", false, :class => "query-type"
-  /    td.td-centered = label_tag 'zip code'
-  /
-  /  tr
-  /    td.td-compact = radio_button_tag 'query_method', "latitude_longitude", false, :class => "query-type"
-  /    td.td-centered = label_tag 'latitude, longitude'
-
 
 p.clearfix
 

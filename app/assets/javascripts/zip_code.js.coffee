@@ -4,9 +4,7 @@
 
 $ ->
   display_query_fields = ->
-#    $('.query-type:checked').each ->
     $('.query-radio-btn:checked').each ->
-#      alert 'query-radio-btn: ' + @.value
       switch @.value
         when 'zip_code'
           $('#city-state-query').hide()
@@ -29,15 +27,12 @@ $ ->
   get_query_string = ->
     query_string = '?'
 
-#    $('.query-type:checked').each ->
     $('.query-radio-btn:checked').each ->
       query_string        += 'query_type=' + (@).value
-#      query_string        += 'query-radio-btn=' + @.value
 
       switch @.value
         when 'zip_code'
           query_string    += '&zip_code=' + $('#zip-code').val()
-#          query_string    += '&zip_code=' + $(@).val
 
         when 'city_state'
           query_string    += '&city=' + $('#city').val() +
@@ -52,7 +47,6 @@ $ ->
 
     query_string          += '&radius=' + $('#radius').val()
 
-#  $('.query-type').click -> display_query_fields()
   $('.query-radio-btn').click -> display_query_fields()
 
   # --- neighbor: highlight on hover
