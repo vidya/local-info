@@ -10,22 +10,24 @@
 
 // --- index page ------------------------------------
 // --- query
-#query-choice-list {
-  float: left;
-  margin-left: 10px;
-}
+#query-method {
+  #query-choice-list {
+    float: left;
+    margin-left: 4px;
 
-#query-choice {
-  clear: both;
-  float: left;
-}
+    #query-choice-label {
+      margin: 0px 0px 7px;
+    }
+  }
 
-#query-choice-label {
-  margin: 0px 0px 7px;
-}
+  #query-choice {
+    clear: both;
+    float: left;
 
-#query-choice .query-radio-btn {
-  margin: 7px 4px 8px 4px;
+    .query-radio-btn {
+      margin: 7px 4px 8px 0px;
+    }
+  }
 }
 
 .zip-code-query {
@@ -35,23 +37,6 @@
 
 #city-state-query #city, #lat-long-query #latitude {
   margin-right: 10px;
-}
-
-#query-table {
-  @include no-border;
-
-  .td-compact {
-    width: 10px;
-    @include no-border;
-  }
-
-  .td-centered {
-    text-align: left;
-
-    @include no-border;
-
-    label { padding-top: 2px; }
-  }
 }
 
 // --- neighbors page ------------------------------------
