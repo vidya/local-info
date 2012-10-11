@@ -1,5 +1,7 @@
 h1 Show neighbors
 
+/ TODO: use the more concise 1.9 method to specify hashes
+
 #query_method
   table.table.table-condensed.table-bordered#query-table
     tr.query-row
@@ -16,7 +18,8 @@ h1 Show neighbors
 
 #zip-code-div
   span
-    = text_field_tag 'zip_code', '', :maxlength => 8, :size => 8, :id => 'zip-code', :class => "query-params", :placeholder => 'zip code'
+    /= text_field_tag 'zip_code', '', :maxlength => 8, :size => 8, :id => 'zip-code', :class => "query-params", :placeholder => 'zip code'
+    = text_field_tag 'zip_code', '', maxlength: 8, size: 8, id: 'zip-code', class: "query-params", placeholder: '88 zip code'
 
 #city-state-div
   span
