@@ -4,76 +4,84 @@
 
 @import "util_styles";
 
-.zip-code-div {
-  margin-bottom: 1px;
-  padding: 4px;
-}
+//
+// TODO: organize the styles
+//
 
-// --- query ----------------------------------------
-#city-state-div #city, #lat-long-div #latitude {
-  margin-right: 10px;
-}
+// --- index page ------------------------------------
+// --- query
+#query-method {
+  #query-choice-list {
+    float: left;
+    margin-left: 4px;
 
-#zip-code-query {
-  background: #d3d3d3;
-  color: blue;
-  @include border-style-util(green);
-  @include round-corner-box;
-
-  clear: both;
-  float: left;
-
-  margin-bottom: 5px;
-  padding-bottom: 10px;
-
-  width:80%;
-
-  #result-summary {
-    margin: 10px;
-    font-size: 1.4em;
-  }
-}
-
-#query-table {
-  @include no-border;
-
-  .td-compact {
-    width: 10px;
-    @include no-border;
+    #query-choice-label {
+      margin: 0px 0px 7px;
+    }
   }
 
-  .td-centered {
-    text-align: left;
+  #query-choice {
+    clear: both;
+    float: left;
 
-    @include no-border;
-
-    label {
-      padding-top: 2px;
+    .query-radio-btn {
+      margin: 7px 4px 8px 0px;
     }
   }
 }
 
-// --- location ----------------------------------------
-.city-name-div {
-  padding: 10px 10px 5px;
-  color: orange;
+.zip-code-query {
+  margin-bottom: 1px;
+  padding: 4px;
 }
 
-.location-info-links {
+#city-state-query #city, #lat-long-query #latitude {
+  margin-right: 10px;
+}
+
+// --- neighbors page ------------------------------------
+// --- input query
+#input-query-container {
+  @include round-corner-box;
+
+  width:80%;
+
+  clear: both;
   float: left;
-  margin-top: 5px;
+
+  background: #fffff0;
+
+  @include border-style-util(green);
+
   margin-bottom: 5px;
+
+  color: maroon;
+
+  #result-summary {
+    margin: 10px;
+
+    font-size: 1.4em;
+  }
+
+  .input-query-div {
+    width: 220px;
+
+    margin:5px;
+    margin-left: 10px;
+    padding: 0px 5px 5px 5px;
+  }
 }
 
-.info-link {
-  margin: 5px;
+// --- location ----------------------------------------
+// TODO: rename location to 'neighbor'
+
+.neighbor-city-name {
+  padding: 10px 10px 5px;
+  color: magenta;
+  font-size: 1.2em;
 }
 
-.first-info-link {
-  margin-left: 0px;
-}
-
-.location-div {
+.neighbor-div {
   margin-top: 8px;
   width: 80%;
 
@@ -83,21 +91,26 @@
 .location-label-div {
   clear: both;
   float: left;
+
   margin-left: 5px;
 }
 
-.wiki-link-div {
-  padding: 10px 10px 5px;
+.neighbor-info-link {
   float: left;
+
+  margin-left: -5px;
+  padding: 0px 10px 5px;
+
+  a { margin: 5px; }
 }
 
 .location-value-label-div {
   width: 140px;
-  margin:5px;
-  margin-left: 25px;
-  padding: 5px;
 
-  @include border-style-util(green);
+  margin:5px;
+  margin-left: 10px;
+  border: 1px dotted;
+  padding: 0px 5px 5px 5px;
 }
 
 .location-value-div {
@@ -106,6 +119,4 @@
 }
 
 // --- miscellaneous ----------------------------------------
-.btn-zip-code {
-    background: #90ee90;
-}
+.btn-zip-code { background: #90ee90; }

@@ -1,25 +1,23 @@
 
 ruby:
-  map_link  = 'http://maps.googleapis.com/maps/api/staticmap?'
-  map_link += "center=#{params[:latitude]},#{params[:longitude]}"
-  map_link += '&zoom=12&size=400x400&sensor=false'
+  map_link  = 'http://maps.googleapis.com/maps/api/staticmap?'      +
+              "center=#{params[:latitude]},#{params[:longitude]}"   +
+              '&zoom=12&size=400x400&sensor=false'
 
-.location-div.clearfix
-  .city-name-div= "#{params[:wiki_title]}"
+.neighbor-div.clearfix
+  .neighbor-city-name= "#{params[:wiki_title]}"
 
   .location-value-label-div
     .location-label-div.clearfix
-      = 'Latitude'
-      br
-      = 'Longitude'
+      |     Latitude
+      br    Longitude
 
     .location-value-div
-      = params[:latitude]
-      br
-      = params[:longitude]
+      =     params[:latitude]
+      br=   params[:longitude]
 
-  .wiki-link-div.clearfix
-    = link_to "Wikipedia", "#{params[:wiki_entry]}", :target => '_blank', :class => 'info-link'
+  .neighbor-info-link.clearfix
+    = link_to "Wikipedia", "#{params[:wiki_entry]}", :target => '_blank'
 
-    = link_to 'Map', "#{map_link}", :target => '_blank', :class => 'info-link'
+    = link_to 'Map', "#{map_link}", :target => '_blank'
 

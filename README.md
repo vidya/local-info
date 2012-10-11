@@ -12,4 +12,3 @@ location can be specified as
     - city and state
     - zip code
     - latitude and longitude
-                            K

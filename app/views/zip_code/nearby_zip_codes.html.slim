@@ -9,8 +9,9 @@ p.clearfix
   ruby:
     params = {
       :wiki_title   => "#{display_form zc.city}, #{zc.state_code} #{zc.zip}",
+
       :wiki_entry   => "http://en.wikipedia.org/wiki/" +
-                          "#{display_form(zc.city).gsub(/ /, '_')},_#{zc.state_code.upcase}",
+                       "#{display_form(zc.city).gsub(/ /, '_')},_#{zc.state_code.upcase}",
 
       :latitude     => "#{zc.latitude}",
       :longitude    => "#{zc.longitude}"
