@@ -8,15 +8,15 @@ class ZipCodeController < ApplicationController
     logger.info "params = #{params.inspect}"
 
     @query = {
-      :query_type     => params[:query_type],
+      query_type:      params[:query_type],
 
-      :zip_code       => params[:zip_code],
-      :city           => params[:city],
-      :state          => params[:state],
+      zip_code:        params[:zip_code],
+      city:            params[:city],
+      state:           params[:state],
 
-      :latitude       => params[:latitude],
-      :longitude      => params[:longitude],
-      :radius         => params[:radius]
+      latitude:       params[:latitude],
+      longitude:       params[:longitude],
+      radius:          params[:radius]
     }
 
     if valid_query? @query
@@ -29,7 +29,7 @@ class ZipCodeController < ApplicationController
 
     else
       flash[:error] = query_error
-      render :action => :index
+      render action: :index
     end
   end
 

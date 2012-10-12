@@ -5,6 +5,8 @@
 #query-method
   h1 Show neighbors
 
+  p.clearfix
+
   #query-choice
     = radio_button_tag 'query_method', "city_state", true, class: 'query-radio-btn'
     br= radio_button_tag 'query_method', "zip_code", false, class: 'query-radio-btn'
@@ -23,7 +25,7 @@ p.clearfix
 
 #city-state-query
   = text_field_tag 'city', '', maxlength: 20, size: 20,
-    id: 'city', class: 'query-params', placeholder: 'City'
+    id: 'city', class: 'query-params', placeholder: 'city'
 
   select#state_selection
     - State.all.each do |st|
