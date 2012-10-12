@@ -13,10 +13,9 @@
 #query-method {
   #query-choice-list {
     float: left;
-    margin-left: 4px;
 
-    #query-choice-label {
-      margin: 0px 0px 7px;
+    p {
+      margin: -4px 0 6px;
     }
   }
 
@@ -25,7 +24,7 @@
     float: left;
 
     .query-radio-btn {
-      margin: 7px 4px 8px 0px;
+      margin: 0px 4px 6px 0px;
     }
   }
 }

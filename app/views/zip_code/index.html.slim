@@ -1,55 +1,48 @@
 
-// TODO: rename - use type-of-query, zip-code-query, radius-of-query etc.
+/ TODO: rename - use type-of-query, zip-code-query, radius-of-query etc.
+/ TODO: use Ruby 1.9 syntax to specify hashes
 
 #query-method
   h1 Show neighbors
 
   #query-choice
-    = radio_button_tag 'query_method', "city_state", true, :class => "query-radio-btn"
-    br= radio_button_tag 'query_method', "zip_code", false, :class => "query-radio-btn"
-    = radio_button_tag 'query_method', "latitude_longitude", false, :class => "query-radio-btn"
+    = radio_button_tag 'query_method', "city_state", true, class: 'query-radio-btn'
+    br= radio_button_tag 'query_method', "zip_code", false, class: 'query-radio-btn'
+    = radio_button_tag 'query_method', "latitude_longitude", false, class: 'query-radio-btn'
 
   #query-choice-list
-    p.query-choice-label
-      = label_tag 'city, state'
-    p.query-choice-label
-      = label_tag 'zip code'
-    p.query-choice-label
-      = label_tag 'latitude, longitude'
+    p= 'city, state'
+    p= 'zip code'
+    p= 'latitude, longitude'
 
 p.clearfix
 
 #zip-code-query.clearfix
-  = text_field_tag 'zip_code', '', :maxlength => 8, :size => 8,
-    :id => 'zip-code', :class => "query-params", :placeholder => 'zip code'
+  = text_field_tag 'zip_code', '', maxlength: 8, size: 8,
+    id: 'zip-code', class: 'query-params', placeholder: 'zip code'
 
 #city-state-query
-  = text_field_tag 'city', '', :maxlength => 20, :size => 20,
-    :id => 'city', :class => "query-params", :placeholder => 'City'
-
-  ruby:
-    state_list     = State.all
+  = text_field_tag 'city', '', maxlength: 20, size: 20,
+    id: 'city', class: 'query-params', placeholder: 'City'
 
   select#state_selection
-    - state_list.each do |st|
+    - State.all.each do |st|
       - if st.code.eql? 'CA'
         option value="#{st.code}" selected="selected" #{st.name}
       - else
         option value="#{st.code}" #{st.name}
 
 #lat-long-query
-  = text_field_tag '', '', :maxlength => 4, :size => 4,
-    :id => 'latitude', :class => "query-params", :placeholder => 'latitude',
-    :rel => 'tooltip', :title=>'for example 37'
+  = text_field_tag 'latitude', '', maxlength: 4, size: 4,
+    id: 'latitude', class: 'query-params', placeholder: 'latitude'
 
-  = text_field_tag 'longitude', '', :maxlength => 8, :size => 8,
-    :id => 'longitude', :class => "query-params", :placeholder => 'longitude',
-    :rel => 'tooltip', :title=>'for example -122'
+  = text_field_tag 'longitude', '', maxlength: 8, size: 8,
+    id: 'longitude', class: 'query-params', placeholder: 'longitude'
 
 #query-div
   = label_tag 'radius(miles)'
-  = number_field_tag 'radius', 25, :in => 1...100
+  = number_field_tag 'radius', 25, in: 1...100
 
   br
   = link_to 'Show neighbors', '/zip_code/nearby_zip_codes',
-    :id => 'show-zip-codes', :class => 'btn-zip-code btn btn-small'
+    id: 'show-zip-codes', class: 'btn-zip-code btn btn-small'
