@@ -77,9 +77,18 @@ $ ->
     else
       alert('Address not found!')
 
-  $('#new_map_link').click ->
-    alert 'NEW map link clicked'
+  $('.city-state-div').each ->
+    $(@).css 'width', '400px'
+    $(@).css 'height', '300px'
+
+#  $('#new_map_link').click ->
+  $('.gmaps_link').click ->
+#    alert 'NEW map link clicked'
     #    false
+
+    link_id = this.id
+    div_id = 'div-' + link_id.substr(5)
+    alert 'div_id = ' + div_id
 
     #-------------------
     fenway = new google.maps.LatLng(37.44, -122.2)
@@ -88,56 +97,9 @@ $ ->
       zoom: 14,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     }
-    map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions)
+#    map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions)
+    map = new google.maps.Map(document.getElementById(div_id), mapOptions)
     #----------------
-
-#    geocoder = new google.maps.Geocoder()
-#    geocoder.geocode({'address':'5510 University Way NE  Seattle, WA 98105'},function(result,status) ->
-#    geocoder.geocode({'address':'5510 University Way NE  Seattle, WA 98105'}, geocode_function)
-
-#    `geocoder = new google.maps.Geocoder();
-#    alert('in embedded javascript');
-#    geocoder.geocode({'address':'5510 University Way NE  Seattle, WA 98105'},function(result,status){
-#      if(status==google.maps.GeocoderStatus.OK){
-#        var map = new google.maps.Map(document.getElementById("the_map"),{
-#          'center': result[0].geometry.location,
-#          'zoom': 14,
-#          'streetViewControl': false,
-#            'mapTypeId': google.maps.MapTypeId.TERRAIN,
-#            'noClear':true,
-#        });
-#        new google.maps.Marker({
-#          'map': map,
-#          'position': result[0].geometry.location,
-#        });
-#      }else{
-#        alert('Address not found!');
-#      }
-#    });`
-#    alert 'end: NEW map link clicked'
-
-    #    var geocoder = new google.maps.Geocoder();
-    #		geocoder.geocode({'address':'5510 University Way NE  Seattle, WA 98105'},function(result,status){
-    #			if(status==google.maps.GeocoderStatus.OK){
-    #				var map = new google.maps.Map(document.getElementById("the_map"),{
-    #					'center': result[0].geometry.location,
-    #					'zoom': 14,
-    #					'streetViewControl': false,
-    #				    'mapTypeId': google.maps.MapTypeId.TERRAIN,
-    #				    'noClear':true,
-    #				});
-    #				new google.maps.Marker({
-    #					'map': map,
-    #					'position': result[0].geometry.location,
-    #				});
-    #			}else{
-    #				alert('Address not found!');
-    #			}
-    #		});
-
-
-#  test_gmaps_function = ->
-#    alert 'FROM: test_gmaps_function'
 
   # ------------- main ---------
   display_query_fields()
