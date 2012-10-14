@@ -8,6 +8,23 @@
 // TODO: organize the styles
 //
 
+// --- common ------------------------------------
+#main {
+  margin-bottom: 20px;
+}
+
+.page-heading {
+  clear: both;
+  float: left;
+
+  h1 {
+    clear: both;
+    float: left;
+
+    margin-top: 20px;
+  }
+}
+
 // --- index page ------------------------------------
 // --- query
 #query-method {

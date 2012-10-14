@@ -1,6 +1,32 @@
-h1 Zip code neighbors
+.page-heading.clearfix
+
+  h1 Zip code neighbors
 
 = render 'input_query'
+
+javascript:
+  window.onload = function(){
+        alert('geocoder alert');
+
+  		var geocoder = new google.maps.Geocoder();
+  		geocoder.geocode({'address':'5510 University Way NE  Seattle, WA 98105'},function(result,status){
+  			if(status==google.maps.GeocoderStatus.OK){
+  				var map = new google.maps.Map(document.getElementById("the_map"),{
+  					'center': result[0].geometry.location,
+  					'zoom': 14,
+  					'streetViewControl': false,
+  				    'mapTypeId': google.maps.MapTypeId.TERRAIN,
+  				    'noClear':true,
+  				});
+  				new google.maps.Marker({
+  					'map': map,
+  					'position': result[0].geometry.location,
+  				});
+  			}else{
+  				alert('Address not found!');
+  			}
+  		});
+  	}
 
 p.clearfix
   = paginate @zc_list
