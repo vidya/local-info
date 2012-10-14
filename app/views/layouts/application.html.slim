@@ -8,6 +8,8 @@ html
     meta content="" name="author"
     = stylesheet_link_tag    "application", :media => "all"
     = javascript_include_tag "application"
+    = javascript_include_tag "http://maps.googleapis.com/maps/api/js?sensor=false&key=AIzaSyBVx-36OJa0F0Gxej9cw7jmtkQ8FiHOZ2U"
+
     = csrf_meta_tags
     = yield(:head)
   body
