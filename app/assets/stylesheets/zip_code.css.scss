@@ -104,6 +104,9 @@
   @include round-corner-box;
 
   .city-state-div {
+    clear: both;
+    float: left;
+
     width: 400px;
     height: 300px;
   }
