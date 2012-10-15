@@ -60,163 +60,33 @@ $ ->
     @.href += get_query_string()
     console.log 'href = ' + @.href
 
-  # --- test gmaps link
-  geocode_function = ->
-    if(status==google.maps.GeocoderStatus.OK)
-      map = new google.maps.Map(document.getElementById("the_map"),{
-        'center': result[0].geometry.location,
-        'zoom': 14,
-        'streetViewControl': false,
-        'mapTypeId': google.maps.MapTypeId.TERRAIN,
-        'noClear':true,
-      })
-      new google.maps.Marker({
-        'map': map,
-        'position': result[0].geometry.location,
-      })
-    else
-      alert('Address not found!')
-
+  # --- gmaps link
   $('.city-state-div').each ->
     $(@).css 'width', '400px'
     $(@).css 'height', '300px'
-
-  $('.gmaps_link').click ->
-    #    false
-
-    link_id = this.id
-    div_id = 'div-' + link_id.substr(5)
-    alert 'div_id = ' + div_id
-
-    #-------------------
-    fenway = new google.maps.LatLng(37.44, -122.2)
-    mapOptions = {
-      center: fenway,
-      zoom: 14,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    }
-    map = new google.maps.Map(document.getElementById(div_id), mapOptions)
-    #----------------
 
   $('.latest_gmaps_link').click ->
     #    false
 
     link_id = this.id
 
-    #==================
-    t1 = link_id.substr(5)
+    lat_long_str = link_id.substr(5)
+    div_id = 'div-' + lat_long_str
 
-    lat = t1.split('--')[0].split(':')[1]
-    long = t1.split('--')[1].split(':')[1]
+    lat = lat_long_str.split('--')[0].split(':')[1]
+    long = lat_long_str.split('--')[1].split(':')[1]
+
     console.log 'lat = ' + lat
     console.log 'long = ' + long
 
-    #====================
-
-    #----------------------
-#    >>> t1 = link_id.substr(5)
-#
-#    "lat:37.44--long:-122.2"
-#
-#    >>> lat-long = t1.split('--')
-#
-#    ReferenceError: invalid assignment left-hand side
-#    [Break On This Error]
-#
-#    ...wport" /><title>Localinfo</title><meta content="" name="description" /><meta con...
-#
-#    nearby...dius=25 (line 1)
-#
-#    >>> t1.split('--')
-#
-#    [
-#
-#    "lat:37.44"
-#
-#    ,
-#
-#    "long:-122.2"
-#
-#    ]
-#
-#    >>> lat-long = new Array
-#
-#    ReferenceError: invalid assignment left-hand side
-#    [Break On This Error]
-#
-#    ...wport" /><title>Localinfo</title><meta content="" name="description" /><meta con...
-#
-#    nearby...dius=25 (line 1)
-#
-#    >>> var lat-long = new Array
-#
-#    SyntaxError: missing ; before statement
-#    [Break On This Error]
-#
-#    ...wport" /><title>Localinfo</title><meta content="" name="description" /><meta con...
-#
-#    nearby...dius=25 (line 1)
-#
-#    >>> var lat-long = new Array;
-#
-#    SyntaxError: missing ; before statement
-#    [Break On This Error]
-#
-#    ...wport" /><title>Localinfo</title><meta content="" name="description" /><meta con...
-#
-#    nearby...dius=25 (line 1)
-#
-#    >>> t1.split('--');
-#
-#    [
-#
-#    "lat:37.44"
-#
-#    ,
-#
-#    "long:-122.2"
-#
-#    ]
-#
-#    >>> t1.split('--')[0];
-#
-#    "lat:37.44"
-#
-#    >>> t1.split('--')[0].split(':')
-#
-#    [
-#
-#    "lat"
-#
-#    ,
-#
-#    "37.44"
-#
-#    ]
-#
-#    >>> t1.split('--')[0].split(':')[1]
-#
-#    "37.44"
-#
-#    >>> t1.split('--')[1].split(':')[1]
-#
-#    "-122.2"
-#    #-----------------------
-
-    div_id = 'div-' + link_id.substr(5)
-    alert 'div_id = ' + div_id
-    t1 = link_id.substr
-
-    #-------------------
-#    fenway = new google.maps.LatLng(37.44, -122.2)
-    fenway = new google.maps.LatLng(lat, long)
+    map_center = new google.maps.LatLng(lat, long)
     mapOptions = {
-      center: fenway,
+      center: map_center,
       zoom: 14,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     }
+
     map = new google.maps.Map(document.getElementById(div_id), mapOptions)
-    #----------------
 
   # ------------- main ---------
   display_query_fields()

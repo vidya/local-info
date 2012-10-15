@@ -1,9 +1,4 @@
 
-ruby:
-  map_link  = 'http://maps.googleapis.com/maps/api/staticmap?'      +
-              "center=#{params[:latitude]},#{params[:longitude]}"   +
-              '&zoom=12&size=400x400&sensor=false'
-
 .neighbor-div.clearfix
   .neighbor-city-name= "#{params[:wiki_title]}"
 
@@ -19,11 +14,6 @@ ruby:
   .neighbor-info-link.clearfix
     = link_to "Wikipedia", "#{params[:wiki_entry]}", :target => '_blank'
 
-    = link_to 'Map', "#{map_link}", :target => '_blank'
+    = link_to_function 'Map', "",  class: 'latest_gmaps_link', id: "link-lat:#{params[:latitude]}--long:#{params[:longitude]}"
 
-    = link_to_function 'New Map', "",  class: 'gmaps_link', id: "link-#{params[:city_state]}"
-    = link_to_function 'Latest New Map', "",  class: 'latest_gmaps_link', id: "link-lat:#{params[:latitude]}--long:#{params[:longitude]}"
-
-  .city-state-div id="div-#{params[:city_state]}"
-  hr
   .city-state-div id="div-lat:#{params[:latitude]}--long:#{params[:longitude]}"
