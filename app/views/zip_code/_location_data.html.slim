@@ -21,9 +21,9 @@ ruby:
 
     = link_to 'Map', "#{map_link}", :target => '_blank'
 
-    /= link_to_function 'New Map', "",  class: 'gmaps_link', id: 'new_map_link'
     = link_to_function 'New Map', "",  class: 'gmaps_link', id: "link-#{params[:city_state]}"
+    = link_to_function 'Latest New Map', "",  class: 'latest_gmaps_link', id: "link-lat:#{params[:latitude]}--long:#{params[:longitude]}"
 
   .city-state-div id="div-#{params[:city_state]}"
-
-  /#map_canvas
+  hr
+  .city-state-div id="div-lat:#{params[:latitude]}--long:#{params[:longitude]}"
