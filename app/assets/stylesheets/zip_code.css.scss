@@ -8,8 +8,6 @@
 // TODO: organize the styles
 //
 
-// --- gmaps test ------------------------------------
-
 // --- common ------------------------------------
 #main {
   margin-bottom: 20px;
@@ -104,6 +102,11 @@
   width: 80%;
 
   @include round-corner-box;
+
+  .city-state-div {
+    width: 400px;
+    height: 300px;
+  }
 }
 
 .location-label-div {

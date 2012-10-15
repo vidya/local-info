@@ -61,20 +61,16 @@ $ ->
     console.log 'href = ' + @.href
 
   # --- gmaps link
-  $('.city-state-div').each ->
-    $(@).css 'width', '400px'
-    $(@).css 'height', '300px'
-
   $('.latest_gmaps_link').click ->
-    #    false
+    link_id       = this.id
 
-    link_id = this.id
+    lat_long_str  = link_id.substr(5)
+    div_id        = 'div-' + lat_long_str
 
-    lat_long_str = link_id.substr(5)
-    div_id = 'div-' + lat_long_str
+    lat_long      = lat_long_str.split('--')
 
-    lat = lat_long_str.split('--')[0].split(':')[1]
-    long = lat_long_str.split('--')[1].split(':')[1]
+    lat           = lat_long[0].split(':')[1]
+    long          = lat_long[1].split(':')[1]
 
     console.log 'lat = ' + lat
     console.log 'long = ' + long
