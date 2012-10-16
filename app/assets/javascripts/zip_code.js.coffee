@@ -60,6 +60,20 @@ $ ->
     @.href += get_query_string()
     console.log 'href = ' + @.href
 
+  # --- gmaps call
+  set_map_in_div = (options) ->
+    map_center = new google.maps.LatLng(options.lat, options.long)
+
+    mapOptions = {
+      center:       map_center,
+#      zoom:         14,
+      zoom:         12,
+      mapTypeId:    google.maps.MapTypeId.ROADMAP
+    }
+
+#    new google.maps.Map(document.getElementById(options.div_id), mapOptions)
+    new google.maps.Map($('#' + options.div_id)[0], mapOptions)
+
   # --- gmaps link
   $('.latest_gmaps_link').click ->
     link_id       = this.id
@@ -75,17 +89,17 @@ $ ->
     lat = lat.replace(/-x-/, '.')
     long = long.replace(/-x-/, '.')
 
-    console.log 'lat = ' + lat
+    console.log '9ji lat = ' + lat
     console.log 'long = ' + long
 
-    map_center = new google.maps.LatLng(lat, long)
-    mapOptions = {
-      center: map_center,
-      zoom: 14,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
+    options = {
+      lat:      lat,
+      long:     long,
+      div_id:   div_id
     }
 
-    map = new google.maps.Map(document.getElementById(div_id), mapOptions)
+    set_map_in_div(options)
+
     $('#' + div_id).css 'display', 'block'
 
   # ------------- main ---------
