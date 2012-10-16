@@ -1,7 +1,10 @@
 
 ruby:
-  params[:latitude].gsub!(/\./, '-x-')
-  params[:longitude].gsub!(/\./, '-x-')
+  lat = params[:latitude]
+  long = params[:longitude]
+
+  mod_lat = params[:latitude].gsub(/\./, '-x-')
+  mod_long = params[:longitude].gsub(/\./, '-x-')
 
 .neighbor-div.clearfix
   .neighbor-city-name= "#{params[:wiki_title]}"
@@ -12,12 +15,12 @@ ruby:
       br    Longitude
 
     .location-value-div
-      =     params[:latitude]
-      br=   params[:longitude]
+      =     "#{lat}"
+      br=   "#{long}"
 
   .neighbor-info-link.clearfix
     = link_to "Wikipedia", "#{params[:wiki_entry]}", :target => '_blank'
 
-    = link_to_function 'Map', "",  class: 'latest_gmaps_link', id: "link-lat_#{params[:latitude]}--long_#{params[:longitude]}"
+    = link_to_function 'Map', "",  class: 'latest_gmaps_link', id: "link-lat_#{mod_lat}--long_#{mod_long}"
 
-  .city-state-div id="div-lat_#{params[:latitude]}--long_#{params[:longitude]}"
+  .city-state-div id="div-lat_#{mod_lat}--long_#{mod_long}"
