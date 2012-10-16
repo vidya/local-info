@@ -69,8 +69,14 @@ $ ->
 
     lat_long      = lat_long_str.split('--')
 
-    lat           = lat_long[0].split(':')[1]
-    long          = lat_long[1].split(':')[1]
+#    lat           = lat_long[0].split(':')[1]
+#    long          = lat_long[1].split(':')[1]
+
+    lat           = lat_long[0].split('_')[1]
+    long          = lat_long[1].split('_')[1]
+
+    lat = lat.replace(/-x-/, '.')
+    long = long.replace(/-x-/, '.')
 
     console.log 'lat = ' + lat
     console.log 'long = ' + long
@@ -83,6 +89,26 @@ $ ->
     }
 
     map = new google.maps.Map(document.getElementById(div_id), mapOptions)
+    $('#' + div_id).show
+    $('#' + div_id).css 'display', 'block'
+#    false
+
+#    $("'#" + div_id + "'").css 'display', 'block'
+
+#    div_id_sel = '#' + div_id
+#    $('.city-state-div').css 'display', 'block'
+#    $("'" + div_id_sel + "'").parent.css 'display', 'block'
+#    $(div_id_sel).parent.css 'display', 'block'
 
   # ------------- main ---------
+#  $('input[name^="news"]')
+#  $('.city-state-div div[id^="div-lat"]').each -> $(@).css 'display', 'none'
+#  $('.city-state-div div[id^="div-lat"]').each -> $(@).css 'visibility', 'none'
+#  $('div[id^="div-lat"]').each ->
+#    console.log this.id
+#    sel = '#' + this.id
+#    $("'" + sel + "'").val 'display u87'
+#    $("'" + sel + "'").val 'display u87'
+#    $("'#" + this.id + "'").show
+
   display_query_fields()
