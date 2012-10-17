@@ -62,15 +62,11 @@ $ ->
 
   # --- gmaps call
   set_map_in_div = (options) ->
-    map_center = new google.maps.LatLng(options.lat, options.long)
+    center      = new google.maps.LatLng(options.lat, options.long)
+    zoom        = 12
+    mapTypeId   = google.maps.MapTypeId.ROADMAP
 
-    mapOptions = {
-      center:       map_center,
-      zoom:         12,
-      mapTypeId:    google.maps.MapTypeId.ROADMAP
-    }
-
-    new google.maps.Map(document.getElementById(options.div_id), mapOptions)
+    new google.maps.Map($('#' + options.div_id)[0], {center, zoom, mapTypeId})
 
   # --- gmaps link
   $('.latest_gmaps_link').click ->
@@ -84,16 +80,10 @@ $ ->
     lat           = lat_long[0].split('_')[1].replace(/-x-/, '.')
     long          = lat_long[1].split('_')[1].replace(/-x-/, '.')
 
-    console.log 'lat = ' + lat
+    console.log '--kkp889-- lat = ' + lat
     console.log 'long = ' + long
 
-    options = {
-      lat:      lat,
-      long:     long,
-      div_id:   div_id
-    }
-
-    set_map_in_div(options)
+    set_map_in_div({lat, long, div_id})
 
     $('#' + div_id).css 'display', 'block'
 
