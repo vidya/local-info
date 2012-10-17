@@ -28,7 +28,7 @@ $ ->
     query_string = '?'
 
     $('.query-radio-btn:checked').each ->
-      query_string        += 'query_type=' + (@).value
+      query_string        += 'query_type=' + @.value
 
       switch @.value
         when 'zip_code'
@@ -66,30 +66,25 @@ $ ->
 
     mapOptions = {
       center:       map_center,
-#      zoom:         14,
       zoom:         12,
       mapTypeId:    google.maps.MapTypeId.ROADMAP
     }
 
-#    new google.maps.Map(document.getElementById(options.div_id), mapOptions)
-    new google.maps.Map($('#' + options.div_id)[0], mapOptions)
+    new google.maps.Map(document.getElementById(options.div_id), mapOptions)
 
   # --- gmaps link
   $('.latest_gmaps_link').click ->
-    link_id       = this.id
+    link_id       = @.id
 
     lat_long_str  = link_id.substr(5)
     div_id        = 'div-' + lat_long_str
 
     lat_long      = lat_long_str.split('--')
 
-    lat           = lat_long[0].split('_')[1]
-    long          = lat_long[1].split('_')[1]
+    lat           = lat_long[0].split('_')[1].replace(/-x-/, '.')
+    long          = lat_long[1].split('_')[1].replace(/-x-/, '.')
 
-    lat = lat.replace(/-x-/, '.')
-    long = long.replace(/-x-/, '.')
-
-    console.log '9ji lat = ' + lat
+    console.log 'lat = ' + lat
     console.log 'long = ' + long
 
     options = {
