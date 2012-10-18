@@ -69,17 +69,22 @@ $ ->
     new google.maps.Map $('#' + options.div_id)[0], {center, zoom, mapTypeId}
 
   # --- gmaps link
-  $('.latest_gmaps_link').click ->
-    lat_long_str  = @.id.substr 5
-    div_id        = 'div-' + lat_long_str
+  $('.latest_gmaps_link').bind 'click', (event) ->
+#  $('.latest_gmaps_link').click = (event) =>
 
-    lat_long      = lat_long_str.split '--'
+    console.log 'uy-987: start'
 
-    lat           = lat_long[0].split('_')[1].replace(/-x-/, '.')
-    long          = lat_long[1].split('_')[1].replace(/-x-/, '.')
+    lat           = @.attributes['lat']
+    long          = @.attributes['long']
+    div_id        = @.attributes['div_id']
 
-    console.log '--ok-- lat = ' + lat
-    console.log 'long = ' + long
+    console.log '--ok-- lat = ' + lat.value
+    console.log 'long = ' + long.value
+    console.log 'div_id = ' + div_id.value
+
+    lat     = lat.value
+    long    = long.value
+    div_id  = div_id.value
 
     set_map_in_div {lat, long, div_id}
 
