@@ -3,62 +3,11 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 $ ->
-  display_query_fields = ->
-    $('.query-radio-btn:checked').each ->
-      switch @.value
-        when 'zip_code'
-          $('#city-state-query').hide()
-          $('#lat-long-query').hide()
-          $('#zip-code-query').show()
-
-        when 'city_state'
-          $('#zip-code-query').hide()
-          $('#lat-long-query').hide()
-          $('#city-state-query').show()
-
-        when 'latitude_longitude'
-          $('#zip-code-query').hide()
-          $('#city-state-query').hide()
-          $('#lat-long-query').show()
-
-        else
-          alert 'display_query_fields: unepected query-type: ' + @.value
-
-  get_query_string = ->
-    query_string = '?'
-
-    $('.query-radio-btn:checked').each ->
-      query_string        += 'query_type=' + @.value
-
-      switch @.value
-        when 'zip_code'
-          query_string    += '&zip_code=' + $('#zip-code').val()
-
-        when 'city_state'
-          query_string    += '&city=' + $('#city').val() +
-                             '&state=' + $('select#state_selection option:selected').val()
-
-        when 'latitude_longitude'
-          query_string    += '&latitude=' + $('#latitude').val() +
-                             '&longitude=' + $('#longitude').val()
-
-        else
-          alert 'get_query_string: unepected query-type: ' + @.value
-
-    query_string          += '&radius=' + $('#radius').val()
-
-  $('.query-radio-btn').click -> display_query_fields()
-
   # --- neighbor: highlight on hover
   add_highlighting        = -> $(@).addClass "active-area"
   delete_highlighting     = -> $(@).removeClass "active-area"
 
   $('.neighbor-div').hover add_highlighting, delete_highlighting
-
-  # ---
-  $('#show-zip-codes').click ->
-    @.href += get_query_string()
-    console.log 'href = ' + @.href
 
   # --- gmaps call
   set_map_in_div = (options) ->
@@ -78,7 +27,6 @@ $ ->
     lat           = lat_str.replace(/-x-/, '.')
     long          = long_str.replace(/-x-/, '.')
 
-
     $(@).data 'params', {lat, long, div_id}
 
   $('.gmaps_link').click ->
@@ -88,5 +36,67 @@ $ ->
 
     $('#' + data.div_id).css 'display', 'block'
 
+  # --- index page
+  class IndexPage
+
+    constructor: (@query_method) ->
+
+    set_query_method: (qm) ->
+      @query_method = qm
+
+    display_query: ->
+      switch @query_method
+         when 'zip_code'
+           $('#city-state-query').hide()
+           $('#lat-long-query').hide()
+           $('#zip-code-query').show()
+
+         when 'city_state'
+           $('#zip-code-query').hide()
+           $('#lat-long-query').hide()
+           $('#city-state-query').show()
+
+         when 'latitude_longitude'
+           $('#zip-code-query').hide()
+           $('#city-state-query').hide()
+           $('#lat-long-query').show()
+
+         else
+           alert 'display_query_fields: unepected query-type: ' + @query_method
+
+    query_string: ->
+      query_string = '?'
+
+      query_string        += 'query_type=' + @query_method
+
+      switch @query_method
+        when 'zip_code'
+          query_string    += '&zip_code=' + $('#zip-code').val()
+
+        when 'city_state'
+          query_string    += '&city=' + $('#city').val() +
+                             '&state=' + $('select#state_selection option:selected').val()
+
+        when 'latitude_longitude'
+          query_string    += '&latitude=' + $('#latitude').val() +
+                             '&longitude=' + $('#longitude').val()
+
+        else
+          alert 'get_query_string: unepected query-type: ' + @query_method
+
+      query_string          += '&radius=' + $('#radius').val()
+
   # ------------- main ---------
-  display_query_fields()
+  # ---
+  $('.query-radio-btn').click ->
+    index_page.set_query_method(@.value)
+    index_page.display_query()
+
+  # ---
+  $('#show-zip-codes').click ->
+    @.href += index_page.query_string()
+    console.log 'href = ' + @.href
+
+  # TODO: bypass the following for neighbors page
+  index_page = new IndexPage('city_state')
+  index_page.display_query()
