@@ -83,16 +83,20 @@ $ ->
       query_string        += '&radius=' + $('#radius').val()
 
   # ------------- main ---------
-  # ---
-  $('.query-radio-btn').click ->
-    index_page.set_query_method(@.value)
-    index_page.display_query()
+  console.log "page id: #{window.location.pathname}"
 
-  # ---
-  $('#show-neighbors').click ->
-    @.href += index_page.query_string()
-    console.log '22b - href = ' + @.href
+  switch window.location.pathname
+    when  '/zip_code/index'
+      $('.query-radio-btn').click ->
+        index_page.set_query_method(@.value)
+        index_page.display_query()
 
-  # TODO: bypass the following for neighbors page
-  index_page = new IndexPage('city_state')
-  index_page.display_query()
+      $('#show-neighbors').click ->
+        @.href += index_page.query_string()
+        console.log '22b - href = ' + @.href
+
+      index_page = new IndexPage('city_state')
+      index_page.display_query()
+
+    else
+      console.log "UNKNOWN PAGE: #{window.location.pathname}"
