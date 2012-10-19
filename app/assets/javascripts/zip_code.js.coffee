@@ -73,23 +73,20 @@ $ ->
     lat_long_str  = @.id
     div_id        = 'div-' + lat_long_str
 
-    lat_long      = lat_long_str.split '--'
+    [lat_str, long_str]   = lat_long_str.split '--'
 
-    lat           = lat_long[0].split('_')[1].replace(/-x-/, '.')
-    long          = lat_long[1].split('_')[1].replace(/-x-/, '.')
+    lat           = lat_str.replace(/-x-/, '.')
+    long          = long_str.replace(/-x-/, '.')
 
-    $(@).data('params', {lat, long, div_id})
+
+    $(@).data 'params', {lat, long, div_id}
 
   $('.gmaps_link').click ->
-    data          = $(@).data 'params'
+    data = $(@).data 'params'
 
-    lat           = data['lat']
-    long          = data['long']
-    div_id        = data['div_id']
+    set_map_in_div data
 
-    set_map_in_div {lat, long, div_id}
-
-    $('#' + div_id).css 'display', 'block'
+    $('#' + data.div_id).css 'display', 'block'
 
   # ------------- main ---------
   display_query_fields()

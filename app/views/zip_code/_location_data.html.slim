@@ -21,7 +21,7 @@ ruby:
   .neighbor-info-link.clearfix
     = link_to "Wikipedia", "#{params[:wiki_entry]}", :target => '_blank'
 
-    = link_to_function 'Map', "",  class: 'gmaps_link', id: "lat_#{mod_lat}--long_#{mod_long}"
+    = link_to_function 'Map', "",  class: 'gmaps_link', id: "#{mod_lat}--#{mod_long}"
 
-  .gmap-div id="div-lat_#{mod_lat}--long_#{mod_long}"
+  .gmap-div id="div-#{mod_lat}--#{mod_long}"
 
