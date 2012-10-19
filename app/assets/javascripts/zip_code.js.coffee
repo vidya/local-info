@@ -38,11 +38,9 @@ $ ->
 
   # --- index page
   class IndexPage
-
     constructor: (@query_method) ->
 
-    set_query_method: (qm) ->
-      @query_method = qm
+    set_query_method: (@query_method) ->
 
     display_query: ->
       switch @query_method
@@ -65,9 +63,7 @@ $ ->
            alert 'display_query_fields: unepected query-type: ' + @query_method
 
     query_string: ->
-      query_string = '?'
-
-      query_string        += 'query_type=' + @query_method
+      query_string         = '?query_type=' + @query_method
 
       switch @query_method
         when 'zip_code'
@@ -84,7 +80,7 @@ $ ->
         else
           alert 'get_query_string: unepected query-type: ' + @query_method
 
-      query_string          += '&radius=' + $('#radius').val()
+      query_string        += '&radius=' + $('#radius').val()
 
   # ------------- main ---------
   # ---
@@ -93,9 +89,9 @@ $ ->
     index_page.display_query()
 
   # ---
-  $('#show-zip-codes').click ->
+  $('#show-neighbors').click ->
     @.href += index_page.query_string()
-    console.log 'href = ' + @.href
+    console.log '22b - href = ' + @.href
 
   # TODO: bypass the following for neighbors page
   index_page = new IndexPage('city_state')
