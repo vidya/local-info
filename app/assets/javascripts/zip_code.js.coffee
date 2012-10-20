@@ -3,40 +3,6 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 $ ->
-  # --- neighbor: highlight on hover
-  add_highlighting        = -> $(@).addClass "active-area"
-  delete_highlighting     = -> $(@).removeClass "active-area"
-
-  $('.neighbor-div').hover add_highlighting, delete_highlighting
-
-  # --- gmaps call
-  set_map_in_div = (options) ->
-    center      = new google.maps.LatLng options.lat, options.long
-    zoom        = 12
-    mapTypeId   = google.maps.MapTypeId.ROADMAP
-
-    new google.maps.Map $('#' + options.div_id)[0], {center, zoom, mapTypeId}
-
-  # --- gmaps link
-  $('.gmaps_link').each ->
-    lat_long_str  = @.id
-    div_id        = 'div-' + lat_long_str
-
-    [lat_str, long_str]   = lat_long_str.split '--'
-
-    lat           = lat_str.replace(/-x-/, '.')
-    long          = long_str.replace(/-x-/, '.')
-
-    $(@).data 'params', {lat, long, div_id}
-
-  $('.gmaps_link').click ->
-    data = $(@).data 'params'
-
-    set_map_in_div data
-
-    $('#' + data.div_id).css 'display', 'block'
-
-  # --- index page
   class IndexPage
     constructor: (@query_method) ->
 
@@ -82,21 +48,73 @@ $ ->
 
       query_string        += '&radius=' + $('#radius').val()
 
-  # ------------- main ---------
-  console.log "page id: #{window.location.pathname}"
+    add_radio_btn_handler: ->
+      self = this
 
-  switch window.location.pathname
-    when  '/zip_code/index'
       $('.query-radio-btn').click ->
-        index_page.set_query_method(@.value)
-        index_page.display_query()
+        self.set_query_method(@.value)
+        self.display_query()
+
+    add_show_neighbors_handler: ->
+      self = this
 
       $('#show-neighbors').click ->
-        @.href += index_page.query_string()
-        console.log '22b - href = ' + @.href
+        @.href += self.query_string()
 
+  class NeighborsPage
+    constructor:  ->
+
+    set_map_link_data: ->
+      $('.gmaps_link').each ->
+        lat_long_str  = @.id
+        div_id        = 'div-' + lat_long_str
+
+        [lat_str, long_str]   = lat_long_str.split '--'
+
+        lat           = lat_str.replace(/-x-/, '.')
+        long          = long_str.replace(/-x-/, '.')
+
+        $(@).data 'params', {lat, long, div_id}
+
+    set_highlight_neighbor_on_hover: ->
+      add_highlighting        = -> $(@).addClass "active-area"
+      delete_highlighting     = -> $(@).removeClass "active-area"
+
+      $('.neighbor-div').hover add_highlighting, delete_highlighting
+
+
+    set_map_in_div: (options) ->
+      center      = new google.maps.LatLng options.lat, options.long
+      zoom        = 12
+      mapTypeId   = google.maps.MapTypeId.ROADMAP
+
+      new google.maps.Map $('#' + options.div_id)[0], {center, zoom, mapTypeId}
+
+    set_map_link_handler: ->
+      self = this
+
+      $('.gmaps_link').click ->
+        data = $(@).data 'params'
+
+        self.set_map_in_div data
+
+        $('#' + data.div_id).css 'display', 'block'
+
+  # ------------- main ---------
+  switch window.location.pathname
+    when  '/zip_code/index'
       index_page = new IndexPage('city_state')
+
+      index_page.add_radio_btn_handler()
+      index_page.add_show_neighbors_handler()
       index_page.display_query()
+
+    when '/zip_code/nearby_zip_codes'
+      neighbors_page = new NeighborsPage()
+
+      neighbors_page.set_map_link_data()
+      neighbors_page.set_highlight_neighbor_on_hover()
+      neighbors_page.set_map_link_handler()
 
     else
       console.log "UNKNOWN PAGE: #{window.location.pathname}"
