@@ -26,7 +26,7 @@ $ ->
            $('#lat-long-query').show()
 
          else
-           alert 'display_query_fields: unepected query-type: ' + @query_method
+           alert 'display_query_fields: unexpected query-type: ' + @query_method
 
     query_string: ->
       query_string         = '?query_type=' + @query_method
@@ -44,7 +44,7 @@ $ ->
                              '&longitude=' + $('#longitude').val()
 
         else
-          alert 'get_query_string: unepected query-type: ' + @query_method
+          alert 'get_query_string: unexpected query-type: ' + @query_method
 
       query_string        += '&radius=' + $('#radius').val()
 
@@ -62,8 +62,6 @@ $ ->
         @.href += self.query_string()
 
   class NeighborsPage
-    constructor:  ->
-
     set_map_link_data: ->
       $('.gmaps_link').each ->
         lat_long_str  = @.id
