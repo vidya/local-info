@@ -1,5 +1,5 @@
 class ZipCodeController < ApplicationController
-  before_filter :authenticate_user!
+  #before_filter :authenticate_user!
 
   attr_accessor :query_error
 

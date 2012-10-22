@@ -7,7 +7,8 @@ LocalInfo::Application.routes.draw do
     root :to => 'home#index'
   end
 
-  root :to => "users#index"
+  #root :to => "users#index"
+  root :to => "zip_code#index"
 
   devise_for :users
   resources :users, :only => [:show, :index]
