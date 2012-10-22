@@ -41,3 +41,17 @@
 #top-menu-local-info .disabled-link {
   color: #778899;
 }
+
+#sign-in-info {
+  width: 310px;
+  padding: 10px;
+
+  background-color: #b0c4de;
+
+  font-style: bold;
+
+  color: blue;
+
+  @include border-style-util(blue, 2px);
+  @include round-corner-box;
+}
