@@ -1,7 +1,12 @@
 LocalInfo::Application.routes.draw do
-  get "zip_code/index"
+  #controller :zip_code do
+  #  match 'zip_code/index'                => :index
+  #  match 'zip_code/nearby_zip_codes'     => :nearby_zip_codes
+  #end
 
-  get "zip_code/nearby_zip_codes"
+  #controller :home do
+  #  match 'home/add_neighbor'     => :add_neighbor
+  #end
 
   authenticated :user do
     root :to => 'home#index'
@@ -10,5 +15,8 @@ LocalInfo::Application.routes.draw do
   root :to => "users#index"
 
   devise_for :users
+
   resources :users, :only => [:show, :index]
+
+  match ':controller(/:action(/:id))(.:format)'
 end

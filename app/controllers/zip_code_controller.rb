@@ -16,7 +16,7 @@ class ZipCodeController < ApplicationController
       city:            params[:city],
       state:           params[:state],
 
-      latitude:       params[:latitude],
+      latitude:        params[:latitude],
       longitude:       params[:longitude],
       radius:          params[:radius]
     }

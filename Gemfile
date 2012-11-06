@@ -41,3 +41,6 @@ gem 'geocoder'
 gem 'gmaps4rails'
 
 gem 'rabl'
+
+gem 'httparty'
+gem 'nokogiri'

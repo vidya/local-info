@@ -1,4 +1,19 @@
-h3 Home
-- @users.each do |user|
-  p
-    | User: #{link_to user.name, user}
+h3 Welcome #{@user.name}
+
+#show-area.clearfix
+  = text_field_tag 'zip_code', '', maxlength: 8, size: 8,
+    id: 'area-zip-code', class: 'query-params', placeholder: 'zip code'
+
+  /div
+    = label_tag 'radius(miles)'
+    = number_field_tag 'area_radius', 25, in: 1...100
+
+  br
+  = link_to 'Show area', '/home/show_area',
+    id: 'show-area-link', class: 'btn btn-primary'
+
+  br
+  br
+
+= link_to 'Add neighbor', '/home/add_neighbor', :id => 'add-neighbor', :class => 'disabled-link'
+br= link_to 'Search neighbors', '/zip_code/index'

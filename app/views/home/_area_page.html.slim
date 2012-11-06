@@ -1,0 +1,37 @@
+
+
+ruby:
+  name_profiles = params[:name_profiles]
+
+- name_profiles.each do |nm_pr|
+  /br
+  br= link_to "#{nm_pr[0]}", "#{nm_pr[1]}", :target => '_blank'
+
+
+/
+/ruby:
+/  lat = params[:latitude]
+/  long = params[:longitude]
+/
+/  mod_lat = params[:latitude].gsub(/\./, '-x-')
+/  mod_long = params[:longitude].gsub(/\./, '-x-')
+/
+/.neighbor-div.clearfix
+/  .neighbor-city-name= "#{params[:wiki_title]}"
+/
+/  .location-value-label-div
+/    .location-label-div.clearfix
+/      |     Latitude
+/      br    Longitude
+/
+/    .location-value-div
+/      =     "#{lat}"
+/      br=   "#{long}"
+/
+/  .neighbor-info-link.clearfix
+/    = link_to "Wikipedia", "#{params[:wiki_entry]}", :target => '_blank'
+/
+/    = link_to_function 'Map', "",  class: 'gmaps_link', id: "#{mod_lat}--#{mod_long}"
+/
+/  .gmap-div id="div-#{mod_lat}--#{mod_long}"
+/

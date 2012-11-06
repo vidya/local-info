@@ -1,0 +1,22 @@
+/h3 Show area #{@user.name}
+h3 Show area
+h4 Theatres in zip_code #{@params[:zip_code]}
+
+/= "params  #{@params.inspect}"
+
+= render 'area_page', params: params
+/= render 'area_page', name_profiles: @name_profiles
+
+/#show-area.clearfix
+/  = text_field_tag 'zip_code', '', maxlength: 8, size: 8,
+    id: 'area-zip-code', class: 'query-params', placeholder: 'zip code'
+
+  br
+  = link_to 'Show area', '/home/show_area',
+    id: 'show-area-link', class: 'btn btn-primary'
+
+  br
+  br
+
+/= link_to 'Add neighbor', '/home/add_neighbor', :id => 'add-neighbor', :class => 'disabled-link'
+/br= link_to 'Search neighbors', '/zip_code/index'
