@@ -10,7 +10,6 @@ class HomeController < ApplicationController
 
   def show_area
     @params = params
-    #binding.pry
     @user = current_user
 
     @name_profiles = get_theatres params
