@@ -2,9 +2,45 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@import "util_styles";
+
 // --- home page ------------------------------------
 // --- links
 #add-neighbor {
-  //color: grey;
   color:#050;
+}
+
+// --- show area page ------------------------------------
+// ---
+#show-area-container {
+  @include round-corner-box;
+
+  width:80%;
+
+  clear: both;
+  float: left;
+
+  background: #fffff0;
+
+  @include border-style-util(green);
+
+  margin-bottom: 5px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+
+  color: maroon;
+
+  //#result-summary {
+  //  margin: 10px;
+  //
+  //  font-size: 1.4em;
+  //}
+  //
+  //.input-query-div {
+  //  width: 220px;
+  //
+  //  margin:5px;
+  //  margin-left: 10px;
+  //  padding: 0px 5px 5px 5px;
+  //}
 }

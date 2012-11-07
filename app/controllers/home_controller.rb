@@ -9,11 +9,8 @@ class HomeController < ApplicationController
   end
 
   def show_area
-    @params = params
-    @user = current_user
-
-    @name_profiles = get_theatres params
-    @params[:name_profiles] = @name_profiles
+    @params                   = params
+    @params[:theatre_profiles]   = get_theatres params
   end
 
   def add_neighbor
