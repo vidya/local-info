@@ -17,7 +17,7 @@ module HomeHelper
   end
 
   def get_theatre_info(start_pt)
-    doc = start_pt
+    doc               = start_pt
 
     name_list         = doc.xpath('//locations/location/name')
     profile_list      = doc.xpath('//locations/location/profile')
@@ -36,10 +36,6 @@ module HomeHelper
                         type:         'movietheater'
                       })
 
-    name_profiles = get_theatre_info doc
-
-    name_profiles.each { |nm, pr| puts "--- v27: (name, profile) = (#{nm}, #{pr})" }
-
-    name_profiles
+    get_theatre_info doc
   end
 end
