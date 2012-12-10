@@ -29,6 +29,35 @@ class HomeController < ApplicationController
     end
   end
 
+  def neighborhood
+
+  end
+
+  def show_places
+    @params                   = params
+    @user                     = current_user
+
+    #binding.pry
+
+    @query = {
+      query_type:      'zip_code',
+
+      zip_code:        params[:zip_code],
+    }
+
+    render :text => "SHOW PLACES: #{params.inspect}"
+
+    #if valid_query? @query
+    #  flash.clear
+    #
+    #  @params[:theatre_profiles]   = get_theatres params
+    #
+    #else
+    #  flash[:error] = @query_error
+    #  redirect_to  action: :index
+    #end
+  end
+
   def add_neighbor
     render :text => 'FROM add_neighbor'
   end

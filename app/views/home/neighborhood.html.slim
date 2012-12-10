@@ -1,0 +1,50 @@
+
+/ TODO: rename - use type-of-query, zip-code-query, radius-of-query etc.
+/ TODO: use Ruby 1.9 syntax to specify hashes
+
+#query-method
+  h1 Neighborhood
+
+  p.clearfix
+
+  /#query-choice
+    = radio_button_tag 'query_method', "city_state", true, class: 'query-radio-btn'
+    br= radio_button_tag 'query_method', "zip_code", false, class: 'query-radio-btn'
+    = radio_button_tag 'query_method', "latitude_longitude", false, class: 'query-radio-btn'
+
+  /#query-choice-list
+    p= 'city, state'
+    p= 'zip code'
+    p= 'latitude, longitude'
+
+p.clearfix
+
+#zip-code-query.clearfix
+  = text_field_tag 'street_address', '', maxlength: 20, size: 20,
+    id: 'street-address', class: 'query-params', placeholder: 'Street address'
+
+#city-state-query
+  = text_field_tag 'city', '', maxlength: 20, size: 20,
+    id: 'places-city', class: 'query-params', placeholder: 'city'
+
+  select#state_selection
+    - State.all.each do |st|
+      - if st.code.eql? 'CA'
+        option value="#{st.code}" selected="selected" #{st.name}
+      - else
+        option value="#{st.code}" #{st.name}
+
+#zip-code-query.clearfix
+  = text_field_tag 'zip_code', '', maxlength: 8, size: 8,
+    id: 'places-zip-code', class: 'query-params', placeholder: 'zip code'
+
+#query-div
+  = label_tag 'radius(miles)'
+  = number_field_tag 'radius', 25, in: 1...100
+
+  br
+  = link_to 'Show places', '/home/show_places',
+    id: 'show-places', class: 'btn btn-primary'
+
+  br
+  br= link_to 'Home page', '/'
