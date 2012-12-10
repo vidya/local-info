@@ -27,7 +27,7 @@ p.clearfix
   = text_field_tag 'city', '', maxlength: 20, size: 20,
     id: 'places-city', class: 'query-params', placeholder: 'city'
 
-  select#state_selection
+  select#places-state-selection
     - State.all.each do |st|
       - if st.code.eql? 'CA'
         option value="#{st.code}" selected="selected" #{st.name}
