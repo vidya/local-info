@@ -19,11 +19,11 @@ $ ->
 
   class ShowPlacesPage
     query_string: ->
-      query_string    = '?'
-      query_string   += 'street_address=' + $('#street-address').val()
-      query_string   += '&city=' + $('#places-city').val()
-      query_string   += '&state=' + $('select#places-state-selection').val()
-      query_string   += '&zipcode=' + $('#places-zip-code').val()
+      query_string    = '?' +
+                        'street_address=' + $('#street-address').val() +
+                        '&city=' + $('#places-city').val() +
+                        '&state=' + $('select#places-state-selection').val() +
+                        '&zipcode=' + $('#places-zip-code').val()
 
       console.log "query_string = #{query_string}"
       query_string
