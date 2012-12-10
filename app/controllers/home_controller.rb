@@ -1,5 +1,8 @@
+#require 'active_models/neighborhood'
+
 class HomeController < ApplicationController
   include HomeHelper
+  include NeighborhoodHelper
 
   before_filter :authenticate_user!
 
@@ -45,6 +48,8 @@ class HomeController < ApplicationController
       zip_code:        params[:zip_code],
     }
 
+    nb = Neighborhood.new params
+    binding.pry
     render :text => "SHOW PLACES: #{params.inspect}"
 
     #if valid_query? @query
