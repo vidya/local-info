@@ -38,8 +38,6 @@ class HomeController < ApplicationController
     @params                   = params
     @user                     = current_user
 
-    #binding.pry
-
     @query = {
       query_type:      'zip_code',
 
@@ -48,10 +46,10 @@ class HomeController < ApplicationController
 
     nb = Neighborhood.new params
     nb.set_lat_long
-    list = nb.restaurants
-    binding.pry
 
-    render :text => "SHOW PLACES: #{params.inspect}"
+    list = nb.restaurants
+
+    render :text => "SHOW PLACES: #{params.inspect}: #{list.inspect}"
 
     #if valid_query? @query
     #  flash.clear

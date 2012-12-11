@@ -21,10 +21,10 @@ $ ->
     query_string: ->
       query_string    = '?' +
                         'street_address=' + $('#street-address').val() +
-                        '&city=' + $('#places-city').val() +
-                        '&state=' + $('select#places-state-selection').val() +
-                        '&zipcode=' + $('#places-zip-code').val() +
-                        '&radius=' + $('#places-radius').val()
+                        '&city='          + $('#places-city').val() +
+                        '&state='         + $('select#places-state-selection').val() +
+                        '&zipcode='       + $('#places-zip-code').val() +
+                        '&radius='        + $('#places-radius').val()
 
       console.log "query_string = #{query_string}"
       query_string

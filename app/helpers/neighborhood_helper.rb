@@ -40,24 +40,6 @@ module NeighborhoodHelper
       [latitude, longitude]
     end
 
-    #def addresses_in_radius(radius)
-    #  addr = "#{street_address}, #{city},  #{state} #{zipcode}"
-    #  hc1 = addr_coordinates addr
-    #
-    #  addr_list = []
-    #
-    #  LocalAddress.all.each do |loc_addr|
-    #    hc2 = [loc_addr.lat_long[0].to_f, loc_addr.lat_long[1].to_f]
-    #
-    #    dist = Geocoder::Calculations.distance_between(hc1, hc2)
-    #
-    #    addr_list << [loc_addr.name_addr, dist] if dist <= radius
-    #  end
-    #  binding.pry
-    #
-    #  addr_list
-    #end
-
     def lat_long
       [latitude, longitude]
     end
@@ -68,9 +50,7 @@ module NeighborhoodHelper
 
       # radius is in meters ( 1 mile = 1609.34 meters)
       params            = "?"
-      #params           += "location=#{latitude},#{longitude}&radius=5000"
-      binding.pry
-      #
+
       radius_in_meters  = @radius.to_f * 1609.34
       params           += "location=#{latitude},#{longitude}&radius=#{radius_in_meters}"
 
@@ -85,6 +65,7 @@ module NeighborhoodHelper
       api_key           = "&key=AIzaSyDTGrWDoR1HTdRVV6r5NmC-hS2AZk3o71c"
 
       uri_string        = places_api_uri + output_format + params + api_key
+      next_uri_string        = places_api_uri + output_format + params + "&pagetoken=next_page_token" + api_key
 
       puts "--- api_key = #{api_key}"
       puts "--- uri_string = #{uri_string}"
@@ -94,6 +75,47 @@ module NeighborhoodHelper
 
       doc               = Nokogiri::XML::Document.parse(response.body)
       name_list         = doc.xpath('//result/name')
+      #binding.pry
+
+      name_list.each { |nm| puts "restaurant: #{nm.text}" }
+
+      total_list = []
+      total_list += name_list
+
+      #count = 1
+      #np = doc.xpath '//next_page_token'
+      #prev_np_token = np
+      #while true
+      #  break if np.nil?
+      #  puts "--- loop count: #{count}, next_page_token = #{np.text} ----------"
+      #
+      #  #np_token = np.text
+      #  #next_uri_string        = places_api_uri + output_format + params + "&pagetoken=#{np.text}" + api_key
+      #  next_uri_string        = places_api_uri + output_format + "&pagetoken=#{np.text}" + api_key
+      #  next_response          = RestClient.get next_uri_string
+      #  next_doc               = Nokogiri::XML::Document.parse(next_response.body)
+      #  next_name_list         = next_doc.xpath('//result/name')
+      #
+      #  #next_name_list.each { |nm| total_list << nm }
+      #  total_list += next_name_list
+      #  next_name_list.each { |nm| puts "restaurant: #{nm.text}" }
+      #  #binding.pry
+      #
+      #  np = next_doc.xpath '//next_page_token'
+      #  break if np.eql? prev_np_token
+      #
+      #  prev_np_token = np
+      #
+      #  count += 1
+      #  break if count > 10
+      #end
+      #
+      ##binding.pry
+      ##puts "----------------------"
+      #puts "total_list: #{total_list.inspect}"
+      ##puts "----------------------"
+
+
       #binding.pry
 
       name_list.each { |nm| puts "restaurant: #{nm.text}" }
