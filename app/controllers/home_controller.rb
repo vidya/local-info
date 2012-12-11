@@ -1,5 +1,3 @@
-#require 'active_models/neighborhood'
-
 class HomeController < ApplicationController
   include HomeHelper
   include NeighborhoodHelper
@@ -49,7 +47,10 @@ class HomeController < ApplicationController
     }
 
     nb = Neighborhood.new params
+    nb.set_lat_long
+    list = nb.restaurants
     binding.pry
+
     render :text => "SHOW PLACES: #{params.inspect}"
 
     #if valid_query? @query

@@ -43,4 +43,8 @@ gem 'gmaps4rails'
 gem 'rabl'
 
 gem 'httparty'
+gem 'google-api-client'
+gem 'geocoder'
+
+gem 'rest-client'
 gem 'nokogiri'
