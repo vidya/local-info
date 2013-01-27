@@ -1,5 +1,7 @@
 module ZipCodeHelper
-
+  #
+  # TODO: cleanup formatting
+  #
   def display_form(name)
     name_segments   = name.split(/ /)
     new_segments    = name_segments.map { |seg| seg.downcase.capitalize }
