@@ -1,15 +1,16 @@
-h3 Welcome #{@user.name}
 
-#show-area.clearfix
-  = text_field_tag 'zip_code', '', maxlength: 8, size: 8,
-    id: 'area-zip-code', class: 'query-params', placeholder: 'zip code'
+#show-area.clearfix.span4
+  h3 Welcome #{@user.name}
+
+  = text_field_tag 'zip_code', '',
+    id: 'area-zip-code', class: 'span-4 pull-right', placeholder: 'zip code'
 
   br
   = link_to 'Show area', '/home/show_area',
-    id: 'show-area-link', class: 'btn btn-primary'
+    id: 'show-area-link', class: 'btn btn-primary pull-right'
 
   br
   br
 
-/br= link_to 'My neighborhood', '/home/neighborhood'
-br= link_to 'Search neighbors', '/zip_code/index'
+  br= link_to 'Search neighbors', '/zip_code/index' , class: 'pull-left'
+
