@@ -2,7 +2,9 @@
 / TODO: rename - use type-of-query, zip-code-query, radius-of-query etc.
 / TODO: use Ruby 1.9 syntax to specify hashes
 
-#query-method
+/#show-area.query-container.clearfix.span4
+/#query-method
+#query-method.query-container.clearfix.span4
   h1 Show neighbors
 
   p.clearfix
@@ -17,37 +19,38 @@
     p= 'zip code'
     p= 'latitude, longitude'
 
-p.clearfix
+  p.clearfix
 
-#zip-code-query.clearfix
-  = text_field_tag 'zip_code', '', maxlength: 8, size: 8,
-    id: 'zip-code', class: 'query-params', placeholder: 'zip code'
+  #zip-code-query.clearfix
+    = text_field_tag 'zip_code', '', maxlength: 8, size: 8,
+      id: 'zip-code', class: 'query-params', placeholder: 'zip code'
 
-#city-state-query
-  = text_field_tag 'city', '', maxlength: 20, size: 20,
-    id: 'city', class: 'query-params', placeholder: 'city'
+  #city-state-query
+    /#city-state-div.clearfix
+    = text_field_tag 'city', '', maxlength: 20, size: 20,
+      id: 'city', class: 'query-params', placeholder: 'city'
 
-  select#state_selection
-    - State.all.each do |st|
-      - if st.code.eql? 'CA'
-        option value="#{st.code}" selected="selected" #{st.name}
-      - else
-        option value="#{st.code}" #{st.name}
+    select#state_selection
+      - State.all.each do |st|
+        - if st.code.eql? 'CA'
+          option value="#{st.code}" selected="selected" #{st.name}
+        - else
+          option value="#{st.code}" #{st.name}
 
-#lat-long-query
-  = text_field_tag 'latitude', '', maxlength: 4, size: 4,
-    id: 'latitude', class: 'query-params', placeholder: 'latitude'
+  #lat-long-query
+    = text_field_tag 'latitude', '', maxlength: 4, size: 4,
+      id: 'latitude', class: 'query-params', placeholder: 'latitude'
 
-  = text_field_tag 'longitude', '', maxlength: 8, size: 8,
-    id: 'longitude', class: 'query-params', placeholder: 'longitude'
+    = text_field_tag 'longitude', '', maxlength: 8, size: 8,
+      id: 'longitude', class: 'query-params', placeholder: 'longitude'
 
-#query-div
-  = label_tag 'radius(miles)'
-  = number_field_tag 'radius', 25, in: 1...100
+  #query-div
+    = label_tag 'radius(miles)'
+    = number_field_tag 'radius', 25, in: 1...100
 
   br
   = link_to 'Show neighbors', '/zip_code/nearby_zip_codes',
-    id: 'show-neighbors', class: 'btn btn-primary'
+    id: 'show-neighbors', class: 'btn btn-primary pull-right'
 
-  br
+.nav-links.clearfix
   br= link_to 'Home page', '/'
