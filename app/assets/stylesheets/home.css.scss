@@ -5,13 +5,11 @@
 @import "util_styles";
 
 // --- home page ------------------------------------
-// --- links
 #add-neighbor {
   color:#050;
 }
 
 // --- show area page ------------------------------------
-// ---
 #show-area-container {
   @include round-corner-box;
 

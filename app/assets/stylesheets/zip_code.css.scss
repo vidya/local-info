@@ -4,10 +4,6 @@
 
 @import "util_styles";
 
-//
-// TODO: organize the styles
-//
-
 // --- common ------------------------------------
 #main {
   margin-bottom: 20px;
@@ -26,7 +22,6 @@
 }
 
 // --- index page ------------------------------------
-// --- query
 #query-method {
   #query-choice-list {
     float: left;
@@ -55,13 +50,7 @@
   margin-right: 10px;
 }
 
-//#city-state-div {
-//  clear: both;
-//  float: left;
-//}
-
 // --- neighbors page ------------------------------------
-// --- input query
 #input-query-container {
   @include round-corner-box;
 
@@ -94,8 +83,6 @@
 }
 
 // --- location ----------------------------------------
-// TODO: rename location to 'neighbor'
-
 .neighbor-city-name {
   padding: 10px 10px 5px;
   color: magenta;
