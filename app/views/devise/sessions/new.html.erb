@@ -1,21 +1,30 @@
-<h2>Sign in</h2>
+<h2 class='span6'>Sign in</h2>
 
-<div id='sign-in-info'>
+<div id='sign-in-info' class='span6'>
   To sign in, please use
   <br/>
   (email, password) = (user@example.com, please)
 </div>
 
 <br/>
+<br/>
 
-<%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-  <div class="form-inputs">
-    <%= f.input :email, :required => false, :autofocus => true %>
-    <%= f.input :password, :required => false %>
-    <%= f.input :remember_me, :as => :boolean if devise_mapping.rememberable? %>
-  </div>
+<div class='query-container span6'>
+  <%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+    <div class="form-inputs">
+      <%= f.input :email, :required => false, :autofocus => true %>
+      <%= f.input :password, :required => false %>
+      <%= f.input :remember_me, :as => :boolean if devise_mapping.rememberable? %>
+    </div>
 
-    <%= f.button :submit, "Sign in", :class => 'btn-primary' %>
-<% end %>
+      <%= f.button :submit, "Sign in", :class => 'btn-primary' %>
+  <% end %>
+</div>
 
-<%= render "devise/shared/links" %>
+<br/>
+<br/>
+
+<div class= 'nav-links clearfix span6'>
+  <%= render "devise/shared/links" %>
+</div>
+

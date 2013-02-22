@@ -1,13 +1,14 @@
 
-#show-area.query-container.clearfix.span4
-  h3 Welcome #{@user.name}
+h3.span6 Welcome #{@user.name}
 
+#show-area.query-container.clearfix.span4
+  br
   = text_field_tag 'zip_code', '',
     id: 'area-zip-code', class: 'span-4 pull-left', placeholder: 'zip code'
 
   br
   = link_to 'Show area', '/home/show_area',
-    id: 'show-area-link', class: 'btn btn-primary pull-right'
+    id: 'show-area-link', class: 'btn btn-primary pull-left'
 
   br
   br

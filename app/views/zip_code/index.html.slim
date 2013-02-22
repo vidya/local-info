@@ -2,8 +2,10 @@
 / TODO: rename - use type-of-query, zip-code-query, radius-of-query etc.
 / TODO: use Ruby 1.9 syntax to specify hashes
 
-#query-method.query-container.clearfix.span4
-  h1 Show neighbors
+h1.span6 Show neighbors
+
+#query-method.query-container.clearfix.span5
+  /h1 Show neighbors
 
   p.clearfix
 
@@ -47,7 +49,7 @@
 
   br
   = link_to 'Show neighbors', '/zip_code/nearby_zip_codes',
-    id: 'show-neighbors', class: 'btn btn-primary pull-right'
+    id: 'show-neighbors', class: 'btn btn-primary pull-left'
 
 .nav-links.clearfix
   br= link_to 'Home page', '/'
