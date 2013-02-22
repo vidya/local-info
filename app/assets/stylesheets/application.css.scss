@@ -55,3 +55,22 @@
   @include border-style-util(blue, 2px);
   @include round-corner-box;
 }
+
+.query-container {
+  @include round-corner-box;
+
+  //width:240px;
+
+  clear: both;
+  float: left;
+
+  background: #fafad2; // lightgoldenrodyellow
+
+  @include border-style-util(green);
+
+  margin-bottom: 5px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  color: maroon;
+}
