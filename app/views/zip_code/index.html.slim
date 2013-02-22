@@ -2,8 +2,6 @@
 / TODO: rename - use type-of-query, zip-code-query, radius-of-query etc.
 / TODO: use Ruby 1.9 syntax to specify hashes
 
-/#show-area.query-container.clearfix.span4
-/#query-method
 #query-method.query-container.clearfix.span4
   h1 Show neighbors
 
@@ -26,7 +24,6 @@
       id: 'zip-code', class: 'query-params', placeholder: 'zip code'
 
   #city-state-query
-    /#city-state-div.clearfix
     = text_field_tag 'city', '', maxlength: 20, size: 20,
       id: 'city', class: 'query-params', placeholder: 'city'
 
