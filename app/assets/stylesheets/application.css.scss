@@ -64,7 +64,8 @@
   clear: both;
   float: left;
 
-  background: #fafad2; // lightgoldenrodyellow
+  //background: #fafad2;    // lightgoldenrodyellow
+  background: #f5fffa;      // mintcream
 
   @include border-style-util(green);
 
@@ -73,4 +74,9 @@
   padding-left: 10px;
   padding-right: 10px;
   color: maroon;
+}
+
+.nav-links {
+  clear: both;
+  margin-left: 22px;
 }

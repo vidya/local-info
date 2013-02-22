@@ -1,9 +1,9 @@
 
-#show-area.clearfix.span4
+#show-area.query-container.clearfix.span4
   h3 Welcome #{@user.name}
 
   = text_field_tag 'zip_code', '',
-    id: 'area-zip-code', class: 'span-4 pull-right', placeholder: 'zip code'
+    id: 'area-zip-code', class: 'span-4 pull-left', placeholder: 'zip code'
 
   br
   = link_to 'Show area', '/home/show_area',
@@ -12,5 +12,6 @@
   br
   br
 
+.nav-links.clearfix
   br= link_to 'Search neighbors', '/zip_code/index' , class: 'pull-left'
 
